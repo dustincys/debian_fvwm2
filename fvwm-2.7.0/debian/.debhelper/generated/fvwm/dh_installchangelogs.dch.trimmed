@@ -1,0 +1,54 @@
+fvwm (1:2.7.0-3) unstable; urgency=medium
+
+  * Update standards to 4.7.0.
+    - Update comment for how x-window-manager priority is computed.
+  * Update debian/copyright to state correct licesens.
+  * Update obsolete depends.
+  * Add patch to fix build with gcc-14. Closes: #1074974
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Thu, 25 Jul 2024 11:07:17 -0600
+
+fvwm (1:2.7.0-2) unstable; urgency=medium
+
+  * Fix an issue with thread locking and libX11 1.8 that
+    causes fvwm to crash. Closes: #1034054
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Tue, 02 May 2023 16:15:27 -0600
+
+fvwm (1:2.7.0-1) unstable; urgency=low
+
+  * New upstream bugfix release.
+  * Remove debian/patches applied upstream.
+  * Update obsolete build depends.
+  * Fix spelling error found by lintian.
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Thu, 20 Oct 2022 11:00:00 -0600
+
+fvwm (1:2.6.9-1) unstable; urgency=low
+
+  * New upstream bugfix release.
+  * Apply upstream bugfix to FvwmIconMan.
+  * Move the modules from /usr/lib/fvwm to /usr/libexec/fvwm
+  * Move the locales to /usr/share/fvwm/locale to avoid conflict with fvwm3.
+  * Rename fvwm-foo binaries to fvwm2-foo and FvwmFoo module
+    manual pages to Fvwm2Foo to avoid confusion with fvwm3 and
+    setup alternatives for fvwm-foo binaries to work with fvwm3.
+  * default-config: Fix bug and add Read $HOME/.fvwm/local.config.
+  * Add debian/NEWS burb to inform users of binary name changes
+    and the new alternatives.
+  * Updates to debian/copyright to list all copyright holders.
+  * Fix debian/watch file.
+  * Update debian/fvwm.lintian-overrides to match format changes.
+  * Remove invalid tags from debian/upstream/metadata.
+  * Remove fvwm-bug from debian package (unused bug reporting script).
+  * Remove broken FvwmCommand.{pm,sh} scripts.
+  * Fix spelling errors and acute accents found by lintian.
+  * Add Vcs info to debian/control.
+  * Update standards version to 4.6.1.
+  * Bump debhelper compat to 13.
+  * Various cleanups to the debian/ build directory.
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Sun, 09 Oct 2022 11:00:00 -0600
+
+# Older entries have been removed from this changelog.
+# To read the complete changelog use `apt changelog fvwm`.

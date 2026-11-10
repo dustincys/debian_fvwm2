@@ -1,0 +1,4 @@
+perl:Depends=perl:any
+shlibs:Depends=libc6 (>= 2.38), libcairo2 (>= 1.2.4), libfontconfig1 (>= 2.12.6), libfribidi0 (>= 0.19.2), libglib2.0-0t64 (>= 2.12.0), libice6 (>= 1:1.0.0), libpng16-16t64 (>= 1.6.46), libreadline8t64 (>= 6.0), librplay3 (>= 3.3.2-2), librsvg2-2 (>= 2.14.4), libsm6 (>= 2:1.2.6), libstroke0, libx11-6, libxcursor1 (>> 1.1.2), libxext6, libxft2 (>> 2.1.1), libxinerama1 (>= 2:1.1.4), libxpm4, libxrender1 (>= 1:0.9.12)
+misc:Depends=
+misc:Pre-Depends=

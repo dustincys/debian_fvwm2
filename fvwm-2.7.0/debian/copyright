@@ -1,0 +1,150 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: fvwm
+Upstream-Contact: Fvwm-workers <fvwm-workers@fvwm.org>
+Source: https://github.com/fvwmorg/fvwm
+
+Files: *
+Copyright: 1988-2021 Fvwm-workers <fvwm-workers@fvwm.org>
+ Robert Nation, Dominik Vogt, Thomas Adam, Christoph Fritz,
+ Julio José Teca Nemesio, Simon Griph, Serge Koksharov,
+ Arwed von Merkatz, David Maciver, Renato Caldas, Malcolm Still,
+ Evgeny Stambulchik, Jonathan Kotta, Viktor Griph, Bjoern Steinbrink,
+ Arnaud Vrac, Rafal Bisingier, George Potapov, Jim C. Brown,
+ Norman Yarvin, Funda Wang, Anton Kazennikov, Johan Svedberg,
+ Andrei Mitrofanow, David Lazar, Scott Smedley, Francis Litterio,
+ David Fries, Nadim Shaikli, Richard Lister, Marcus Lundblad,
+ Jason Weber, Cameron Simpson, Ben Winslow, Ben Mathews, David Fries,
+ Anders Andersson, Steve Talley, Maxim F. Ischenko, Jan Echternach,
+ Stian Sletner, Derek B. Noonburg, Jochen Klenner, Uwe Pross,
+ Dave Trollope, Daniel Henninger, Suzanne Skinner, Lorenz Minder,
+ Johannes Zellner, Darren Stuart Embry, Neil Bird, Alan F. Ho,
+ Olivier Chapuis, Mikhael Goikhman, Matthias Clasen, Nagi Aboulenein,
+ Dan Espen, Tony Finch, Will French, Julian Gilbey, German Gomez Garcia,
+ Udo Grabowski, Mike Han, Albrecht Kadlec, Andrew Morton, Tomas Ogren,
+ Jay Painter, Chetan Patil, Mark Rainford, Chris Rankin,
+ Steven M. Robbins, Chris Ross, Paul D. Smith, Benoit Triquet,
+ Fabien Villard, A.J. Weber, Bob Woodside, Charles Hines, Dan Astoorian,
+ Greg J. Badros, Andrew Atrens, John Aughey, Graham Barr, David Barth,
+ Mike Blatchley, Mark Boyns, Eli Burke, Martin Cartwright, Beat Christen,
+ Frederic Cordier, Andrew Davison, Frederic Devernay, Austin Donnelly,
+ Matthias Ettrich, Evans & Sutherland Computer Corporation, Frank Fejes,
+ Thomas Zuwei Feng, Mike Finger, Pete Forman, Patrice Fortier, Todd Fries,
+ Larry Gensch, Romano Giannetti, Peter Gray, Kaj Groner, Eddy J. Gurney,
+ Markus Gutschke, Georg Hager, John Heidemann, Paul Hudson,
+ Sverre H. Huseby, Toshi Isogai, Jesper James, Thimo Jansen,
+ Michael A. Kazda, Jonathan Kelley, Andreas Klemm, Alfredo Kengi Kojima,
+ Chris Laas, Tom LaStrange, Ric Lister, David MacKenzie, Don Mahurin,
+ Pekka Marjola, Anthony Martin, Christophe Martin, Makoto Matushita,
+ Grant McDorman, Henry R. McTague, Roman Mitnitski, Brady Montz,
+ Ludvig A. Norin, Bill Oswald, Carsten Paeth, Hector Peraza,
+ Per Persson, Trent Piepho, Pekka Pietikinen, Mark Powell, Randy Ray,
+ William E. Roadcap, Frank Scheelen, Eric Schott, Mark Scott,
+ Cameron Simpson, Kit Smithers, Nobutaka Suzuki, Szijarto Szabolcs,
+ Andrew Taylor, Jason L. Tibbitts, Jarl Totland, Ilkka E T Tuohela,
+ Andrew Veliath, Barry A. Warsaw, Dan Weeks, Brian Wellington,
+ Rob Whapham, Alan Wild, Randall Winchester, Bo Yang, Jaimos Skriletz,
+ Free Software Foundation, Inc., Massachusetts Institute of Technology,
+ Joey Shutup, Scott James Remnant, Dan Nicholson, Dave Gabmle,
+ sJSON contributors, Alan Richardson, Carsten Haitzler, Sir Boris,
+ The Open Group, Nicholas Marriott, Todd C. Miller, and others.
+License: GPL-2+
+Comment: Addditional copyright block from COPYING file.
+ Additional copyrights of the fvwm main module:
+ .
+ fvwm is copyright 1988 by Evans and Sutherland Computer
+ Corporation, Salt Lake City, Utah, and 1989 by the Massachusetts
+ Institute of Technology, Cambridge, Massachusetts, all rights
+ reserved.
+ .
+ It is also copyright 1993 and 1994 by Robert Nation,
+ Nobutaka Suzuki, Mike Finger.  Copyright 1996 by Romano Giannetti.
+ .
+ Permission to use, copy, modify, and distribute this software and its
+ documentation for any purpose and without fee is hereby granted,
+ provided that the above copyright notice appear in all copies and that
+ both that copyright notice and this permission notice appear in
+ supporting documentation, and that the names of Evans & Sutherland and
+ M.I.T. not be used in advertising in publicity pertaining to
+ distribution of the software without specific, written prior
+ permission.
+ .
+ ROBERT NATION, CHARLES HINES, EVANS & SUTHERLAND, AND M.I.T. DISCLAIM
+ ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT SHALL EVANS &
+ SUTHERLAND OR M.I.T. BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+ CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF
+ USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ PERFORMANCE OF THIS SOFTWARE.
+
+Files: libs/ColorUtils.*
+Copyright: 1995 Free Software Foundation, Inc.
+License: LGPL-2+
+
+Files: default-config/images/icons/*
+Copyright: Google Material Design
+License: Apache-2.0
+Comment:
+ License for the icons used in the default-config from Google:
+ https://material.io/icons/
+
+Files: debian/*
+Copyright: 2000 Alexander Kotelnikov <sacha@debian.org>
+           2004-2007 Manoj Srivastava <srivasta@debian.org>
+           2012 Vincent W. Chen <vinmun@gmail.com>
+           2016-2024 Jaimos Skriletz <jaimosskriletz@gmail.com>
+License: GPL-2+
+Comment:
+ This package was debianized by Alexander Kotelnikov <sacha@debian.org> on
+ Thu, 14 Dec 2000 14:30:25 +0300.
+
+License: GPL-2+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+
+License: LGPL-2+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ .
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ On Debian systems, the comlete text of the GNU Library General Public License
+ version 2 can be found in "/usr/share/common-licenses/LGPL-2".
+
+License: Apache-2.0
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ .
+ You may obtain a copy of the License at
+ https://www.apache.org/licenses/LICENSE-2.0
+ .
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ .
+ On Debian systems, the complete text of the Apache License Version 2.0
+ can be found in "/usr/share/common-licenses/Apache-2.0".

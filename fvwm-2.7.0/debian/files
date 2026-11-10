@@ -1,0 +1,3 @@
+fvwm-dbgsym_2.7.0-3_amd64.deb debug optional automatic=yes
+fvwm_2.7.0-3_amd64.buildinfo x11 optional
+fvwm_2.7.0-3_amd64.deb x11 optional

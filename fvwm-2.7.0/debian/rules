@@ -1,0 +1,40 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
+override_dh_auto_configure:
+	dh_auto_configure -- --verbose --with-stroke-library --disable-imlibtest --with-imlib-prefix=/no/dir --with-readline-library=yes --enable-mandoc --program-transform-name='s/vwm/vwm2/'
+
+override_dh_install:
+	dh_install
+	# Remove unneeded link.
+	cd $(CURDIR)/debian/fvwm/usr/bin && rm -f fvwm22
+	# Remove old unused script.
+	cd $(CURDIR)/debian/fvwm/usr/bin && rm -f fvwm2-bug
+
+override_dh_installman:
+	dh_installman
+	# Remove unneeded link.
+	cd $(CURDIR)/debian/fvwm/usr/share/man/man1 && rm -f fvwm22.1
+	# Remove manual page for removed fvwm-bug script.
+	cd $(CURDIR)/debian/fvwm/usr/share/man/man1 && rm -rf fvwm2-bug.1
+	# Rename Fvwm Module Manual pages
+	for module in Animate Auto Backer Banner Buttons ConsoleC.pl Console \
+	  Cpp Event Form IconMan Ident M4 Pager Perl Proxy Rearrange Script; \
+	do \
+	  cd $(CURDIR)/debian/fvwm/usr/share/man/man1 && mv Fvwm$$module.1 Fvwm2$$module.1; \
+	done
+
+override_dh_installchangelogs:
+	dh_installchangelogs NEWS
+
+%:
+	dh $@

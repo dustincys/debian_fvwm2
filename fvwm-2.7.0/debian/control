@@ -1,0 +1,63 @@
+Source: fvwm
+Section: x11
+Priority: optional
+Maintainer: Jaimos Skriletz <jaimosskriletz@gmail.com>
+Rules-Requires-Root: no
+Build-Depends: debhelper (>= 13.0.0),
+               debhelper-compat (= 13),
+               file,
+               fontconfig,
+               gettext,
+               libfontconfig-dev,
+               libfreetype-dev,
+               libfribidi-dev (>= 0.10.7),
+               libncurses-dev,
+               libpng-dev,
+               libreadline-dev,
+               librplay3-dev,
+               librsvg2-dev (>= 2.13.92),
+               libsm-dev,
+               libstroke0-dev,
+               libx11-dev,
+               libxcursor-dev,
+               libxext-dev,
+               libxft-dev,
+               libxi-dev,
+               libxinerama-dev,
+               libxpm-dev,
+               libxrandr-dev,
+               libxrender-dev,
+               libxt-dev,
+               pkgconf,
+               sharutils,
+               xsltproc
+Standards-Version: 4.7.0
+Homepage: https://www.fvwm.org/
+Vcs-Browser: https://github.com/somiaj/fvwm2-debian
+Vcs-Git: https://github.com/somiaj/fvwm2-debian.git
+
+Package: fvwm
+Architecture: any
+Depends: libperl4-corelibs-perl,
+         ${perl:Depends},
+         ${misc:Depends},
+         ${shlibs:Depends}
+Recommends: lxmenu-data | gnome-menus,
+            python3,
+            python3-xdg
+Suggests: cpp,
+          libx11-protocol-perl,
+          m4,
+          perl-tk,
+          stalonetray
+Provides: x-window-manager
+Description: F(?) Virtual Window Manager
+ FVWM is a powerful ICCCM2 compliant multiple virtual desktop window manager
+ for the X Window System. FVWM requires relatively little memory.
+ .
+ This 2.6 version includes new features like full support of the EWMH
+ (Extended Window Manager Hints) specification, internationalization,
+ improved window decoration code (no flickering anymore),
+ bi-directional asian text support, FreeType font support
+ (antialiasing), image rendering, Perl based module library, support
+ for PNG images, side titles and much more.

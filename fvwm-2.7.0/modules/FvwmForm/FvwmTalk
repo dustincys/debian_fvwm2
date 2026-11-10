@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/libexec/fvwm2/2.7.0/FvwmForm $@ FvwmForm-Talk

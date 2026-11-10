@@ -1,0 +1,476 @@
+Description: Update default-config and fvwm2-menu-desktop to use the renamed
+  fvwm2-foo helper binaries and Fvwm2Name module manpages in Debian.
+Author: Jaimos Skriletz <jaimosskriletz@gmail.com>
+Forwarded: not-needed
+Last-Update: 2022-10-08
+
+--- a/bin/fvwm-menu-desktop-config.fpl
++++ b/bin/fvwm-menu-desktop-config.fpl
+@@ -16,8 +16,8 @@ my $configtmp = "$ENV{'FVWM_USERDIR'}/.X
+ 
+ open(MSG ,">$configtmp") || die "Error $!";
+ 
+-my $all = `fvwm-menu-desktop --get-menus all`;
+-my $selected = `fvwm-menu-desktop --get-menus desktop`;
++my $all = `fvwm2-menu-desktop --get-menus all`;
++my $selected = `fvwm2-menu-desktop --get-menus desktop`;
+ 
+ my @all_filelist = split(/ /,$all);
+ my @selected_filelist = split(/ /,$selected);
+@@ -95,7 +95,7 @@ else {
+ *${modname}: Line    center
+ *${modname}: Text    \"\$[gt.No menus found! Check why from within a terminal with]\"
+ *${modname}: Line    center
+-*${modname}: Text    \"'fvwm-menu-desktop -v'\"
++*${modname}: Text    \"'fvwm2-menu-desktop -v'\"
+ *${modname}: Line    left
+ *${modname}: Text    \" \"
+ ";
+@@ -187,7 +187,7 @@ foreach my $key (keys %all_menus) {
+ }
+ 
+ $fvwmform_commands .= "\"
+-*${modname}: Command    PipeRead 'fvwm-menu-desktop \\
++*${modname}: Command    PipeRead 'fvwm2-menu-desktop \\
+ \$(IconsOn\?--enable-mini-icons )\\
+ \$(Size\?-s \$(Size) )\\
+ \$(TitlesOn\?--with-titles )\\
+@@ -244,7 +244,7 @@ $fvwmform_commands .= "
+   '*${modname}Default: AppIcon      \$(AppIcon) '       \\
+ ) >> \$FVWM_USERDIR/.${modname}
+ 
+-*${modname}: Command PipeRead 'fvwm-menu-desktop'
++*${modname}: Command PipeRead 'fvwm2-menu-desktop'
+ 
+ *${modname}: Button     continue \"\$[gt.Save]\"
+ 
+--- a/bin/fvwm-menu-desktop.1.in
++++ b/bin/fvwm-menu-desktop.1.in
+@@ -14,13 +14,13 @@
+ .if t .sp .5
+ ..
+ .ta .3i .6i .9i 1.2i 1.5i 1.8i
+-.TH fvwm-menu-desktop 1 "@RELDATELONG@ (@VERSION@)" Fvwm "Fvwm Modules"
++.TH fvwm2-menu-desktop 1 "@RELDATELONG@ (@VERSION@)" Fvwm "Fvwm Modules"
+ .UC
+ .SH NAME
+-fvwm-menu-desktop \- Reads XDG menu files and creates Fvwm menus
++fvwm2-menu-desktop \- Reads XDG menu files and creates Fvwm menus
+ 
+ .SH SYNOPSIS
+-fvwm-menu-desktop
++fvwm2-menu-desktop
+ [ \fB\-\-help\fR|\fB\-h\fR ]
+ [ \fB\-\-version\fR ]
+ [ \fB\-\-install\-prefix\fR \fIDIR\fR ]
+@@ -99,7 +99,7 @@ build all menus matching those settings.
+ 
+ .IP "\fB\-\-install-prefix\fR \fIDIR\fR"
+ Optional parameter to override the standard locations for XDG menu
+-definitions. Tells \fBfvwm-menu-desktop\fR to look in \fIDIR\fR for .menu
++definitions. Tells \fBfvwm2-menu-desktop\fR to look in \fIDIR\fR for .menu
+ files instead of the standard locations /etc/xdg/menus (and
+ $HOME/.config/menus if it exists).
+ 
+@@ -123,7 +123,7 @@ are included in the top level menu. \fIN
+ 
+ .IP "\fB\-\-regen\-cmd\fR \fICMD\fR "
+ This option sets the fvwm command \fICMD\fR that is run when the menu item
+-\&'Regenerate' is selected. The default is "PipeRead `fvwm-menu-desktop`".
++\&'Regenerate' is selected. The default is "PipeRead `fvwm2-menu-desktop`".
+ 
+ .IP "\fB\-\-term\-cmd\fR \fICMD\fR "
+ This option sets the terminal emulator command \fICMD\fR that is used to
+@@ -164,7 +164,7 @@ Enables additional information printouts
+ 
+ .IP "Icons Options"
+ 
+-By default, fvwm-menu-desktop builds menus without mini\-icons. To enable
++By default, fvwm2-menu-desktop builds menus without mini\-icons. To enable
+ mini\-icons use the following options.
+ 
+ If ImageMagick is installed on the system, the script will resize and copy
+@@ -194,7 +194,7 @@ changed with this parameter. Default is
+ 
+ .IP "\fB\-\-mini\-icon\-dir\fR \fIDIR\fR"
+ When the right size mini-icon isn't available,
+-fvwm-menu-desktop creates icons with the right size in $HOME/.fvwm/icons.
++fvwm2-menu-desktop creates icons with the right size in $HOME/.fvwm/icons.
+ If you don't want to use the default directory, $HOME/.fvwm/icons,
+ use this option to specify a different folder.
+ 
+@@ -207,15 +207,15 @@ Sets the default directory icon if no ot
+ \&'gnome-fs-directory'.
+ 
+ .SH USAGE
+-\fBfvwm-menu-desktop\fR outputs XDG .menu files in the syntax of fvwm
+-menus. When \fBfvwm-menu-desktop\fR is run with no options, it will load
++\fBfvwm2-menu-desktop\fR outputs XDG .menu files in the syntax of fvwm
++menus. When \fBfvwm2-menu-desktop\fR is run with no options, it will load
+ defaults from the \fBFvwmForm-XDGMenu-Config\fR file (see below) then
+ search your system for suitable menu file(s). To see which menus are
+ available on your system run:
+ 
+ .RS
+ .EX
+-fvwm-menu-desktop --get-menus all
++fvwm2-menu-desktop --get-menus all
+ .EE
+ .RE
+ 
+@@ -225,18 +225,18 @@ $HOME/.config/menus or the location set
+ use \fB\-\-install\-prefix\fR to specify another location search for menus.
+ 
+ Though a combination of command line options and the \fBFvwmForm-XDGMenu-Config\fR
+-settings, \fBfvwm-menu-desktop\fR can generate any combination of the menus
++settings, \fBfvwm2-menu-desktop\fR can generate any combination of the menus
+ found. To get a list of what menu(s) would be generated use the
+ \fB--get-menus\fR \fIdesktop\fR option. The following will list all menus
+-generated if \fBfvwm-menu-desktop\fR was run with no options.
++generated if \fBfvwm2-menu-desktop\fR was run with no options.
+ 
+ .RS
+ .EX
+-fvwm-menu-desktop --get-menus desktop
++fvwm2-menu-desktop --get-menus desktop
+ .EE
+ .RE
+ 
+-\fBfvwm-menu-desktop\fR determines which menu(s) to generate as follows
++\fBfvwm2-menu-desktop\fR determines which menu(s) to generate as follows
+ 
+ .RS
+ If no config file is found, all menus will be weighted and the script
+@@ -258,14 +258,14 @@ weighted menu is generated.
+ \fB--all-menus\fR by itself will generate all menus found.
+ .RE
+ 
+-By default \fBfvwm-menu-desktop\fR will generate a menu whose
++By default \fBfvwm2-menu-desktop\fR will generate a menu whose
+ top level name is "XDGMenu". To tell fvwm to read the output
+-of \fBfvwm-menu-desktop\fR to create the menu XDGMenu add the following
++of \fBfvwm2-menu-desktop\fR to create the menu XDGMenu add the following
+ to your fvwm config file:
+ 
+ .RS
+ .EX
+-PipeRead 'fvwm-menu-desktop'
++PipeRead 'fvwm2-menu-desktop'
+ .EE
+ .RE
+ 
+@@ -283,13 +283,13 @@ AddToMenu MenuFvwmRoot "XDG Menu" Popup
+ .EE
+ .RE
+ 
+-\fBfvwm-menu-desktop\fR can be configured though both command line
++\fBfvwm2-menu-desktop\fR can be configured though both command line
+ options and a \fBFvwmForm\fR GUI to customize the menu(s) that get
+ generated.
+ 
+ .SH GUI
+ \fBFvwmForm-XDGMenu-Config\fR is a \fBFvwmForm\fR interface that can
+-be used to configure the defaults for \fBfvwm-menu-desktop\fR. You
++be used to configure the defaults for \fBfvwm2-menu-desktop\fR. You
+ can access this from the "Configure" item in the top level menu that
+ is generated or run the following from within \fBFvwmConsole\fR
+  
+@@ -302,14 +302,14 @@ Module FvwmPerl -l fvwm-menu-desktop-con
+ This form can be used to select which menu(s) get generated by default
+ along with setting many (but not all) of the available options. When
+ you click "Save Settings" the form will write a config file located at
+-$FVWM_USERDIR/.FvwmForm-XDGMenu-Config that \fBfvwm-menu-desktop\fR
++$FVWM_USERDIR/.FvwmForm-XDGMenu-Config that \fBfvwm2-menu-desktop\fR
+ will parse for defaults when run.
+ 
+ See the help inside of \fBFvwmForm-XDGMenu-Config\fR for more information.
+ 
+ 
+ .SH EXAMPLES
+-There are many ways to setup when fvwm runs \fBfvwm-menu-desktop\fR
++There are many ways to setup when fvwm runs \fBfvwm2-menu-desktop\fR
+ to generate the menu. One method is to just generate the menu when
+ fvwm loads and then use the GUI config tool to change any options.
+ To do this you only need to add the following to the fvwm config file:
+@@ -317,7 +317,7 @@ To do this you only need to add the foll
+ .RS
+ .EX
+ AddToMenu MenuFvwmRoot "XDG Menu" Popup XDGMenu
+-PipeRead 'fvwm-menu-desktop'
++PipeRead 'fvwm2-menu-desktop'
+ .EE
+ .RE
+ 
+@@ -335,7 +335,7 @@ to call a custom function and write the
+ 
+ .RS
+ .EX
+-fvwm-menu-desktop --regen-cmd XDGRegen > $FVWM_USERDIR/.XDGMenu
++fvwm2-menu-desktop --regen-cmd XDGRegen > $FVWM_USERDIR/.XDGMenu
+ .EE
+ .RE
+ 
+@@ -347,7 +347,7 @@ file doesn't exist when fvwm starts.
+ .EX
+ DestroyFunc XDGRegen
+ AddToFunc XDGRegen
+-+ I PipeRead 'fvwm-menu-desktop --regen-cmd XDGRegen > \\
+++ I PipeRead 'fvwm2-menu-desktop --regen-cmd XDGRegen > \\
+     $[FVWM_USERDIR]/.XDGMenu; echo "Nop"'
+ + I Read $[FVWM_USERDIR]/.XDGMenu
+ 
+@@ -356,7 +356,7 @@ Read $[FVWM_USERDIR]/.XDGMenu
+ .EE
+ .RE
+ 
+-Besides creating a top level menu, \fBfvwm-menu-desktop\fR can insert the
++Besides creating a top level menu, \fBfvwm2-menu-desktop\fR can insert the
+ menu into an existing menu using the \fB--insert-in-menu\fR option. For example
+ one could create the menu MenuFvwmRoot and include the XDG items at the end.
+ 
+@@ -368,7 +368,7 @@ AddToMenu MenuFvwmRoot "Fvwm" Title
+   ...
+ + "ItemN" ActionN
+ + "" Nop
+-PipeRead 'fvwm-menu-desktop --insert-in-menu MenuFvwmRoot'
++PipeRead 'fvwm2-menu-desktop --insert-in-menu MenuFvwmRoot'
+ .EE
+ .RE
+ 
+@@ -388,7 +388,7 @@ AddToFunc XDGRegen
+   ...
+ + I AddToMenu MenuFvwmRoot "ItemN" ActionN
+ + I AddToMenu MenuFvwmRoot "" Nop
+-+ I PipeRead 'fvwm-menu-desktop --insert-in-menu MenuFvwmRoot \\
+++ I PipeRead 'fvwm2-menu-desktop --insert-in-menu MenuFvwmRoot \\
+               --regen-cmd XDGRegen'
+ .EE
+ .RE
+@@ -401,7 +401,7 @@ create the menu XDGMenu when it is opene
+ .RS
+ .EX
+ AddToMenu XDGMenu "XDGMenu" Title
+-+ DynamicPopUpAction PipeRead 'fvwm-menu-desktop'
+++ DynamicPopUpAction PipeRead 'fvwm2-menu-desktop'
+ .EE
+ .RE
+ 
+@@ -413,7 +413,7 @@ is open used the \fB--dynamic\fR option
+ .RS
+ .EX
+ AddToMenu XDGMenu "XDGMenu" Title
+-+ DynamicPopUpAction PipeRead 'fvwm-menu-desktop \\
+++ DynamicPopUpAction PipeRead 'fvwm2-menu-desktop \\
+                      --dynamic --include-items config'
+ + DynamicPopDownAction DestroyMenu recreate XDGMenu
+ .EE
+@@ -437,7 +437,7 @@ AddToFunc GenRootMenu
+   ...
+ + I AddToMenu MenuFvwmRoot "ItemN" ActionN
+ + I AddToMenu MenuFvwmRoot "" Nop
+-+ PipeRead `fvwm-menu-desktop --insert-in-menu MenuFvwmRoot \\
+++ PipeRead `fvwm2-menu-desktop --insert-in-menu MenuFvwmRoot \\
+            --include-items config`
+ 
+ AddToMenu MenuFvwmRoot "Fvwm" Title
+--- a/bin/fvwm-menu-desktop.in
++++ b/bin/fvwm-menu-desktop.in
+@@ -193,7 +193,7 @@ Standard output is a series Fvwm command
+     default_app_icon = "gnome-applications"
+     default_dir_icon = "gnome-fs-directory"
+     include_items = 'both'
+-    regen_cmd = 'PipeRead `fvwm-menu-desktop`'
++    regen_cmd = 'PipeRead `fvwm2-menu-desktop`'
+     dynamic_menu = False
+     menu_error = False
+     term_cmd = "x-terminal-emulator -e" # Debian Policy change xterm to x-terminal-emulator
+@@ -255,7 +255,7 @@ Standard output is a series Fvwm command
+             print(usage)
+             sys.exit()
+         elif o in ("--version") :
+-            print("fvwm-menu-desktop version " + version)
++            print("fvwm2-menu-desktop version " + version)
+             sys.exit()
+         elif o in ("-e", "--menu-error") :
+             menu_error = True
+@@ -331,7 +331,7 @@ Standard output is a series Fvwm command
+             printtext('AddToMenu "%s" "%s" Title' % (top, top))
+             printtext('+ "Error: python-xdg not found" Nop')
+             printtext('+ "" Nop')
+-            printtext('+ "Regenerate" PipeRead `fvwm-menu-desktop -e`')
++            printtext('+ "Regenerate" PipeRead `fvwm2-menu-desktop -e`')
+         else:
+             sys.stderr.write('Python module python-xdg not found.')
+         sys.exit(1)
+@@ -373,7 +373,7 @@ Standard output is a series Fvwm command
+             printtext('AddToMenu "%s" "%s" Title' % (top, top))
+             printtext('+ "Error: No menus found" Nop')
+             printtext('+ "" Nop')
+-            printtext('+ "Regenerate" PipeRead `fvwm-menu-desktop -e`')
++            printtext('+ "Regenerate" PipeRead `fvwm2-menu-desktop -e`')
+         else:
+             sys.stderr.write(install_prefix+desktop+menu_type+".menu not available on this system. Exiting...\n")
+         sys.exit(1)
+@@ -810,7 +810,7 @@ Options:
+                               menu. NAME can be 'config', 'regenerate', 'both'
+                               or 'none'. Default both.
+     --regen-cmd ACTION        The fvwm ACTION for the 'Regenerate' menu item.
+-                              Default: 'PipeRead `fvwm-menu-desktop`'
++                              Default: 'PipeRead `fvwm2-menu-desktop`'
+     --term-cmd CMD            Terminal emulator CMD used on terminal entries.
+                               Debian Default: x-terminal-emulator -e
+     --dynamic                 used with dynamic menus.
+--- a/default-config/config
++++ b/default-config/config
+@@ -64,8 +64,8 @@ AddToFunc   StartFunction
+ DestroyFunc InitBackground
+ AddToFunc InitBackground
+ + I Test (f $[FVWM_USERDIR]/.BGdefault) \
+-    Exec exec fvwm-root $[FVWM_USERDIR]/.BGdefault
+-+ I TestRc (NoMatch) Exec exec fvwm-root \
++    Exec exec fvwm2-root $[FVWM_USERDIR]/.BGdefault
+++ I TestRc (NoMatch) Exec exec fvwm2-root \
+     $[FVWM_DATADIR]/default-config/images/background/bg1.png
+ 
+ # Mouse Bindings Functions
+@@ -103,12 +103,12 @@ AddToFunc   ViewManPage
+ DestroyFunc SetBG
+ AddToFunc   SetBG
+ + I Test (f $[FVWM_USERDIR]/images/background/$0) \
+-    Exec exec fvwm-root $[FVWM_USERDIR]/images/background/$0
++    Exec exec fvwm2-root $[FVWM_USERDIR]/images/background/$0
+ + I TestRc (Match) Exec exec ln -fs images/background/$0 \
+     $[FVWM_USERDIR]/.BGdefault
+ + I TestRc (Match) Break
+ + I Test (!f $[FVWM_DATADIR]/default-config/images/background/$0) Break
+-+ I Exec exec fvwm-root $[FVWM_DATADIR]/default-config/images/background/$0
+++ I Exec exec fvwm2-root $[FVWM_DATADIR]/default-config/images/background/$0
+ + I Exec exec ln -fs $[FVWM_DATADIR]/default-config/images/background/$0 \
+     $[FVWM_USERDIR]/.BGdefault
+ 
+@@ -301,7 +301,7 @@ AddToMenu   MenuFvwmRoot "Fvwm" Title
+ + "&Quit%icons/quit.png%" Module FvwmScript FvwmScript-ConfirmQuit
+ 
+ # Generate XDGMenu
+-PipeRead "fvwm-menu-desktop -e"
++PipeRead "fvwm2-menu-desktop -e"
+ 
+ # Programs Menu
+ #
+@@ -409,30 +409,30 @@ AddToMenu   MenuSendToPage
+ # Fvwm Man Pages (Help) Menu
+ DestroyMenu MenuFvwmManPages
+ AddToMenu   MenuFvwmManPages "Help" Title
+-+ "fvwm"                ViewManPage fvwm
+-+ "FvwmAnimate"         ViewManPage FvwmAnimate
+-+ "FvwmAuto"            ViewManPage FvwmAuto
+-+ "FvwmBacker"          ViewManPage FvwmBacker
+-+ "FvwmBanner"          ViewManPage FvwmBanner
+-+ "FvwmButtons"         ViewManPage FvwmButtons
+-+ "FvwmCommand"         ViewManPage FvwmCommand
+-+ "FvwmConsole"         ViewManPage FvwmConsole
+-+ "FvwmEvent"           ViewManPage FvwmEvent
+-+ "FvwmForm"            ViewManPage FvwmForm
+-+ "FvwmIconMan"         ViewManPage FvwmIconMan
+-+ "FvwmIdent"           ViewManPage FvwmIdent
+-+ "FvwmPager"           ViewManPage FvwmPager
+-+ "FvwmPerl"            ViewManPage FvwmPerl
+-+ "FvwmProxy"           ViewManPage FvwmProxy
+-+ "FvwmRearrange"       ViewManPage FvwmRearrange
+-+ "FvwmScript"          ViewManPage FvwmScript
+-+ "" Nop
+-+ "fvwm-root"	        ViewManPage fvwm-root
+-+ "fvwm-menu-desktop"   ViewManPage fvwm-menu-desktop
+-+ "fvwm-menu-directory" ViewManPage fvwm-menu-directory
+-+ "fvwm-menu-headlines" ViewManPage fvwm-menu-headlines
+-+ "fvwm-menu-xlock"     ViewManPage fvwm-menu-xlock
+-+ "fvwm-config"         ViewManPage fvwm-config
+++ "fvwm2"                ViewManPage fvwm2
+++ "FvwmAnimate"          ViewManPage Fvwm2Animate
+++ "FvwmAuto"             ViewManPage Fvwm2Auto
+++ "FvwmBacker"           ViewManPage Fvwm2Backer
+++ "FvwmBanner"           ViewManPage Fvwm2Banner
+++ "FvwmButtons"          ViewManPage Fvwm2Buttons
+++ "FvwmCommand"          ViewManPage Fvwm2Command
+++ "FvwmConsole"          ViewManPage Fvwm2Console
+++ "FvwmEvent"            ViewManPage Fvwm2Event
+++ "FvwmForm"             ViewManPage Fvwm2Form
+++ "FvwmIconMan"          ViewManPage Fvwm2IconMan
+++ "FvwmIdent"            ViewManPage Fvwm2Ident
+++ "FvwmPager"            ViewManPage Fvwm2Pager
+++ "FvwmPerl"             ViewManPage Fvwm2Perl
+++ "FvwmProxy"            ViewManPage Fvwm2Proxy
+++ "FvwmRearrange"        ViewManPage Fvwm2Rearrange
+++ "FvwmScript"           ViewManPage Fvwm2Script
+++ "" Nop
+++ "fvwm2-root"	         ViewManPage fvwm2-root
+++ "fvwm2-menu-desktop"   ViewManPage fvwm2-menu-desktop
+++ "fvwm2-menu-directory" ViewManPage fvwm2-menu-directory
+++ "fvwm2-menu-headlines" ViewManPage fvwm2-menu-headlines
+++ "fvwm2-menu-xlock"     ViewManPage fvwm2-menu-xlock
+++ "fvwm2-config"         ViewManPage fvwm2-config
+ 
+ #######
+ # 5: Mouse and Key bindings
+--- a/modules/FvwmForm/FvwmForm-XDGMenuHelp
++++ b/modules/FvwmForm/FvwmForm-XDGMenuHelp
+@@ -14,7 +14,7 @@ DestroyModuleConfig  FvwmForm-XDGMenuHel
+ *FvwmForm-XDGMenuHelp:   Line    left
+ *FvwmForm-XDGMenuHelp:   Text    "$[gt.All the XDG menus found on the system are listed under Available Menus.  Use]"
+ *FvwmForm-XDGMenuHelp:   Line    left
+-*FvwmForm-XDGMenuHelp:   Text    "$[gt.this FvwmForm to configure some of the defaults options for fvwm-menu-desktop]"
++*FvwmForm-XDGMenuHelp:   Text    "$[gt.this FvwmForm to configure some of the defaults options for fvwm2-menu-desktop]"
+ *FvwmForm-XDGMenuHelp:   Line    left
+ *FvwmForm-XDGMenuHelp:   Text    "$[gt.and select which menus are generated.  Select the options you want and then]"
+ *FvwmForm-XDGMenuHelp:   Line    left
+@@ -24,7 +24,7 @@ DestroyModuleConfig  FvwmForm-XDGMenuHel
+ *FvwmForm-XDGMenuHelp:   Line    left
+ *FvwmForm-XDGMenuHelp:   Text    "$[gt.Export Menu:]"
+ *FvwmForm-XDGMenuHelp:   Line    left
+-*FvwmForm-XDGMenuHelp:   Text    "$[gt.     Generates a menu by calling fvwm-menu-desktop with the selected options]"
++*FvwmForm-XDGMenuHelp:   Text    "$[gt.     Generates a menu by calling fvwm2-menu-desktop with the selected options]"
+ *FvwmForm-XDGMenuHelp:   Line    left
+ *FvwmForm-XDGMenuHelp:   Text    "$[gt.     and saves the output to Output Path. After the menu file is created it]"
+ *FvwmForm-XDGMenuHelp:   Line    left
+@@ -34,7 +34,7 @@ DestroyModuleConfig  FvwmForm-XDGMenuHel
+ *FvwmForm-XDGMenuHelp:   Line    left
+ *FvwmForm-XDGMenuHelp:   Text    "$[gt.Save and Regenerate:]"
+ *FvwmForm-XDGMenuHelp:   Line    left
+-*FvwmForm-XDGMenuHelp:   Text    "$[gt.     This saves the settings then runs fvwm-menu-desktop with no options using]"
++*FvwmForm-XDGMenuHelp:   Text    "$[gt.     This saves the settings then runs fvwm2-menu-desktop with no options using]"
+ *FvwmForm-XDGMenuHelp:   Line    left
+ *FvwmForm-XDGMenuHelp:   Text    "$[gt.     the defaults saved in the config file. This does not export the menu.]"
+ *FvwmForm-XDGMenuHelp:   Line    left
+@@ -48,7 +48,7 @@ DestroyModuleConfig  FvwmForm-XDGMenuHel
+ *FvwmForm-XDGMenuHelp:   Line    Left
+ *FvwmForm-XDGMenuHelp:   Line    " "
+ *FvwmForm-XDGMenuHelp:   Line    left
+-*FvwmForm-XDGMenuHelp:   Text    "$[gt.If no menus appear check with 'fvwm-menu-desktop --get-menus all -v'.]"
++*FvwmForm-XDGMenuHelp:   Text    "$[gt.If no menus appear check with 'fvwm2-menu-desktop --get-menus all -v'.]"
+ *FvwmForm-XDGMenuHelp:   Line    left
+ *FvwmForm-XDGMenuHelp:   Text    "$[gt.Also it is a good idea to check $HOME/.xsession-errors for errors.]"
+ *FvwmForm-XDGMenuHelp:   Line    left
+@@ -63,8 +63,8 @@ DestroyModuleConfig  FvwmForm-XDGMenuHel
+ *FvwmForm-XDGMenuHelp:   Command Nop
+ *FvwmForm-XDGMenuHelp:   Button  continue "Options Help"
+ *FvwmForm-XDGMenuHelp:   Command Module FvwmForm FvwmForm-XDGOptionsHelp
+-*FvwmForm-XDGMenuHelp:   Button  continue "fvwm-menu-desktop man page"        
+-*FvwmForm-XDGMenuHelp:   Command Exec exec x-terminal-emulator -g 100x50 -n "Help fvwm-menu-desktop" -T "Help fvwm-menu-desktop" -e "man fvwm-menu-desktop"
++*FvwmForm-XDGMenuHelp:   Button  continue "fvwm2-menu-desktop man page"        
++*FvwmForm-XDGMenuHelp:   Command Exec exec x-terminal-emulator -g 100x50 -n "Help fvwm2-menu-desktop" -T "Help fvwm2-menu-desktop" -e "man fvwm2-menu-desktop"
+ *FvwmForm-XDGMenuHelp:   Line    Left
+ *FvwmForm-XDGMenuHelp:   Line    " "
+ 
+--- a/modules/FvwmForm/FvwmForm-XDGOptionsHelp
++++ b/modules/FvwmForm/FvwmForm-XDGOptionsHelp
+@@ -131,8 +131,8 @@ DestroyModuleConfig  FvwmForm-XDGOptions
+ *FvwmForm-XDGOptionsHelp:   Command Nop
+ *FvwmForm-XDGOptionsHelp:   Button  continue "XDGMenu Help"
+ *FvwmForm-XDGOptionsHelp:   Command Module FvwmForm FvwmForm-XDGMenuHelp
+-*FvwmForm-XDGOptionsHelp:   Button  continue "fvwm-menu-desktop $[gt.manpage]"        
+-*FvwmForm-XDGOptionsHelp:   Command Exec exec x-terminal-emulator -g 100x50 -n "Help fvwm-menu-desktop" -T "Help fvwm-menu-desktop" -e "man fvwm-menu-desktop"
++*FvwmForm-XDGOptionsHelp:   Button  continue "fvwm2-menu-desktop $[gt.manpage]"        
++*FvwmForm-XDGOptionsHelp:   Command Exec exec x-terminal-emulator -g 100x50 -n "Help fvwm2-menu-desktop" -T "Help fvwm2-menu-desktop" -e "man fvwm2-menu-desktop"
+ *FvwmForm-XDGOptionsHelp:   Line    Left
+ *FvwmForm-XDGOptionsHelp:   Line    " "
+ 

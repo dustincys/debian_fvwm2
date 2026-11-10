@@ -1,0 +1,2133 @@
+fvwm (1:2.7.0-3) unstable; urgency=medium
+
+  * Update standards to 4.7.0.
+    - Update comment for how x-window-manager priority is computed.
+  * Update debian/copyright to state correct licesens.
+  * Update obsolete depends.
+  * Add patch to fix build with gcc-14. Closes: #1074974
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Thu, 25 Jul 2024 11:07:17 -0600
+
+fvwm (1:2.7.0-2) unstable; urgency=medium
+
+  * Fix an issue with thread locking and libX11 1.8 that
+    causes fvwm to crash. Closes: #1034054
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Tue, 02 May 2023 16:15:27 -0600
+
+fvwm (1:2.7.0-1) unstable; urgency=low
+
+  * New upstream bugfix release.
+  * Remove debian/patches applied upstream.
+  * Update obsolete build depends.
+  * Fix spelling error found by lintian.
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Thu, 20 Oct 2022 11:00:00 -0600
+
+fvwm (1:2.6.9-1) unstable; urgency=low
+
+  * New upstream bugfix release.
+  * Apply upstream bugfix to FvwmIconMan.
+  * Move the modules from /usr/lib/fvwm to /usr/libexec/fvwm
+  * Move the locales to /usr/share/fvwm/locale to avoid conflict with fvwm3.
+  * Rename fvwm-foo binaries to fvwm2-foo and FvwmFoo module
+    manual pages to Fvwm2Foo to avoid confusion with fvwm3 and
+    setup alternatives for fvwm-foo binaries to work with fvwm3.
+  * default-config: Fix bug and add Read $HOME/.fvwm/local.config.
+  * Add debian/NEWS burb to inform users of binary name changes
+    and the new alternatives.
+  * Updates to debian/copyright to list all copyright holders.
+  * Fix debian/watch file.
+  * Update debian/fvwm.lintian-overrides to match format changes.
+  * Remove invalid tags from debian/upstream/metadata.
+  * Remove fvwm-bug from debian package (unused bug reporting script).
+  * Remove broken FvwmCommand.{pm,sh} scripts.
+  * Fix spelling errors and acute accents found by lintian.
+  * Add Vcs info to debian/control.
+  * Update standards version to 4.6.1.
+  * Bump debhelper compat to 13.
+  * Various cleanups to the debian/ build directory.
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Sun, 09 Oct 2022 11:00:00 -0600
+
+fvwm (1:2.6.8-1) unstable; urgency=low
+
+  * New upstream release.
+  * Replace macro AM_CHECK_PKG_CONFIG with upstream macro
+    PKG_PROG_PKG_CONFIG. (Closes: #900074)
+  * Remove old gkt/gnome configure flags from dh_auto_configure.
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Sun, 03 Jun 2018 09:51:00 -0700
+
+fvwm (1:2.6.7-49-gd84d4d4b-1) unstable; urgency=low
+
+  * Rebase package off of master branch on github.
+    Version obtained from 'git describe --tags'.
+  * Update standards version to 4.1.4:
+    - Update urls to be https from http in copyright.
+  * Switch freetype-config to pkg-config. (Closes: #887713)
+  * Bump debhelper from v10 to v11.
+  * Updated fvwm-menu-desktop for Python 3 and changed depends to python3.
+  * fvwm-menu-desktop bug fixes, including a manpage error. (Closes: #862268)
+  * FvwmConsole manpage clarification about -name option. (Closes: #876885)
+  * Added another patch to keep FvwmIconMan from triggering window hint
+    warnings. (Closes: #849355)
+  * Improved fvwm-menu-desktop configuration form to work with a larger
+    number of xdg menus. (Closes: #852046)
+  * Added support for terminal applications to fvwm-menu-desktop.
+  * Patched fvwm-menu-desktop to use x-terminal-emulator instead
+    of xterm per Debian policy.
+  * Add debian/upstream/metadata.
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Thu, 17 May 2018 18:22:00 -0700
+
+fvwm (1:2.6.7-3) unstable; urgency=low
+
+  * Updates to default configuration.
+  * Improved fvwm-menu-directory error handling when python-xdg or
+    a menu is not installed.
+  * Fixed an issue with FvwmIconMan triggering window hint warnings.
+    (Closes: #849355)
+  * Added patch to improve window hit warnings (related to above).
+  * Added FvwmDebug to the list of removed modules in debian/changelog.
+    (Closes: #849423)
+  * Removed reference to removed modules from manpages. (Closes: #849422)
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Mon, 16 Jan 2017 10:52:00 -0700
+
+fvwm (1:2.6.7-2) unstable; urgency=low
+
+  * Fixed a path mentioned in debian/NEWS.Debian.
+  * Remove old conffile /etc/menu-methods/fvwm via dpkg-maintscript-helper.
+  * Removed dpkg-maintscript-helper rm_conffile /etc/X11/fvwm/system.fvwm2rc
+    from install/remove scripts used for wheezy->jessie upgrade.
+  * Fixed another spelling error found by lintian.
+  * Ignoring lintian spelling error of Hilight Highlight since Hilight
+    is a valid FVWM config option.
+  * fvwm-perllib.patch: Adds --name to pod2man. (Closes: #777471)
+  * manpage-ClickTime.patch: Add info about double click time to manpage.
+    (Closes: #567387)
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Thu, 15 Dec 2016 00:08:00 -0700
+
+fvwm (1:2.6.7-1) unstable; urgency=low
+
+  * New maintainer.
+  * Complies with Policy v3.9.8.
+  * New upstream version. (Closes: #820425)
+    - Fvwm now has a default config. See /usr/share/doc/fvwm/NEWS.Debian.gz
+    - Removed the following modules:
+        FvwmDebug, FvwmDragWell, FvwmGTK, FvwmSave, FvwmSaveDesk,
+        FvwmScroll, FvwmTabs, FvwmTaskBar, FvwmTheme, FvwmWharf,
+        FvwmWinList, FvwmWindowMenu, FvwmIconBox.
+    - fvwm-menu-desktop updated (now a python script). (Closes: #808292)
+    - New features and bug fixes. For a full list between 2.6.5 and 2.6.7
+      see /usr/share/doc/fvwm/changelog.gz
+  * Removed the old system.fvwm2rc config examples.
+  * Upstream moved from cvs to git. Updated watch file.
+  * Removed old Debian menu methods. Use XDG menus with fvwm-menu-desktop.
+  * html documentation no longer built (outdated/broken links).
+  * Package build is reproducible. (Closes: #831646)
+  * Fixed conflicting array sizes of TabCom. (Closes: #801612)
+  * Upstream no longer includes a debian/ directory, so Debian no longer has
+    to repackage the upstream source without debian/. Removed .ds from version.
+  * Updated copyright to include the Apache-2.0 license for the icons
+    in default-config/images/icons/*
+  * Changed compat from level 9 to level 10 and removed dh-autoreconf and
+    autotools-dev from build-depends.
+  * Fixed lintian Info flags: spelling errors and fvwm.desktop Keywords.
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Wed, 16 Nov 2016 19:33:00 -0700
+
+fvwm (1:2.6.5.ds-4.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Change b-d libpng12-dev to libpng-dev to ease libpng transition
+    (Closes: #810182)
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Thu, 21 Jan 2016 15:44:27 +0100
+
+fvwm (1:2.6.5.ds-4) unstable; urgency=low
+
+  * Complies with Policy v3.9.6.
+  * debian/patches/enable-more-mouse-buttons.patch: Allow more mouse buttons to
+    be used (Closes: #775570).
+  * debian/patches/fvwm_msg-echo.patch: Print Echo (and all other commands) on
+    one line, as before the format-security.patch (Closes: #730563).
+  * Add "Keywords" entry to .desktop file.
+
+ -- Vincent W. Chen <vinmun@gmail.com>  Mon, 19 Jan 2015 18:49:49 -0800
+
+fvwm (1:2.6.5.ds-3) unstable; urgency=low
+
+  * Complies with Policy v3.9.4.
+  * debian/patches/fvwm_msg-echo.patch: Fixed Echo command (Closes: #727050).
+  * debian/patches/spelling-error-manpage.patch: Fixed typo in FvwmPager
+    manpage: spelling transfered -> transferred.
+
+ -- Vincent W. Chen <vinmun@gmail.com>  Tue, 22 Oct 2013 17:03:33 -0700
+
+fvwm (1:2.6.5.ds-2) unstable; urgency=low
+
+  * Document the removal of /etc/X11/fvwm/system.fvwm2rc. The behavior when
+    the user has no config file now follows upstream (Closes: #598948, #699908).
+  * debian/patches/deprecated.patch: Fixed argument reversal (Closes: #699586).
+  * debian/patches/debian-default-menu.patch: Provide a Debian menu entry when
+    the user has no config file.
+
+ -- Vincent W. Chen <vinmun@gmail.com>  Sat, 09 Feb 2013 17:21:32 -0800
+
+fvwm (1:2.6.5.ds-1) unstable; urgency=low
+
+  * New maintainer (Closes: #690101).
+  * New upstream release (Closes: #681255, #623194, #684395).
+  * New features:
+    - FvwmPager now wraps window names if SmallFont is set.
+  * Bug fixes:
+    - Made signals registered with FVWM unblocking.
+    - The "UnderMouse" option to PositionPlacement now honors the EWMH
+      working area by default, if it's in use.
+    - FvwmButtons handles the deleted window correctly for sub-windows.
+  * New features and bug fixes between 2.6.5 and 2.5.30 are listed in
+    /usr/share/doc/fvwm/NEWS.gz.
+  * Reformat the copyright to follow DEP-5.
+  * Convert to quilt (3.0) format.
+  * Convert to building using debhelper.
+  * Example config files are now under /usr/share/doc/fvwm/examples/.
+  * Fixed broken sound file symlinks (Closes: #555452).
+  * Fixed Lintian errors (under debian/patches):
+    - format-security.patch: format-security.
+    - deprecated.patch: deprecated-declarations error for function
+      XKeycodeToKeysym().
+    - manpage-error.patch: manpage-has-errors-from-man.
+    - spelling-error-binary.patch: spelling-error-in-binary.
+    - spelling-error-manpage.patch: spelling-error-in-manpage.
+
+ -- Vincent W. Chen <vinmun@gmail.com>  Sun, 20 Jan 2013 15:41:46 -0800
+
+fvwm (1:2.5.30.ds-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Add Depends on libperl4-corelibs-perl (Closes: #658917)
+
+ -- Dominic Hargreaves <dom@earth.li>  Sat, 05 May 2012 22:19:11 +0100
+
+fvwm (1:2.5.30.ds-1) unstable; urgency=low
+
+  * New upstream release
+  * New features:
+    - Support libpng 1.4.0's slightly newer API.
+    - Added new fvwm-convert-2.6 script to convert older fvwm 2.4.x
+      config files.
+    - New BugOpts option QtDragnDropWorkaround to work around an
+      oddity in handling drag-n-drop events to Qt applications.
+  * Bug fixes:
+    - Don't lazy match AnyContext when printing out bindings and the
+       contexts they apply to with "PrintInfo Bindings".
+    - Fixed the InitialMapCommand style from running when FVWM is
+      restarting.
+    - Fix rendering of FvwmForm windows when initially mapped.
+    - Fix placement of windows when using MinoverlapPlacement and
+      friends.
+    - Fix segfault when tearing off menus using a Pixmap
+      background.
+    - Fix "window jump" bug when moving a window across page
+      boundaries.
+    - Flush property events for same type in applications which
+      repeatedly set the same XAtom.  (Gnucash, Openoffice, etc.)
+    - Fix opening of files using Read/PipeRead to accept paths in
+      the form "./" to indicate CWD.  Fixes
+        $ fvwm -f ./some-fvwm2rc
+    - Fix further crash when copying menustyles with MenuFace
+      involving pixmaps.
+    - Make layer changes apply immediately via Style commands for
+      any currently mapped windows.
+    - Fix flickering/incorrect location of the GeometryWindow with
+      Xinerama/TwinView when resizing windows.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 08 Jun 2010 10:17:14 -0700
+
+fvwm (1:2.5.28.ds-3) unstable; urgency=low
+
+  * Bug fix: "Updating the fvwm Maintainer/Uploaders list", thanks to
+    Sandro Tosi                                          (Closes: #554096).
+  * Told lintian not to parse really old changelog entries.
+  * Use fvwm2, rather than the symlink'd fvwm, in desktop entries.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 03 Nov 2009 16:24:49 -0600
+
+fvwm (1:2.5.28.ds-2) unstable; urgency=low
+
+  * A few minor fixes to the package.
+  * [b0b58a8]: [fvwm]: Fvwm.desktop Use fvwm2 as the application, since
+    that is the binary we ship.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sat, 31 Oct 2009 00:50:18 -0500
+
+fvwm (1:2.5.28.ds-1) unstable; urgency=low
+
+  * New upstream release
+   - New differentiated options for SnapAttraction when snapping
+     against screen edges:
+       "None", "ScreenWindows", "ScreenIcons", "ScreenAll"
+   - New option to the BugOpts command: TransliterateUtf8.
+   - Fixed non-visible Qt windows after a Qt deferred map (e.g.
+     Skype profile windows).
+   - Fixed the use of the X-resource "fvwmstyle".
+   - Fixed segmentation fault in FvwmEvent when parsing an
+     undefined event name, or an undefined environment variable
+     to the RPlayHost option.
+   - Fixed the events startup, shutdown and unknown in FvwmEvent.
+   - Fvwm now retains utf8 window names when the WM_NAME changes,
+     and the utf8 name converted to the default charset match
+     the old WM_NAME.
+   - Fixed the options RPlayVolume and RPlayPriority in FvwmEvent.
+   - Fixed SnapAttraction: Option SameType/Icons/Windows did
+     falsely not affect conditions of option "Screen" and option
+     "SameType" snapped falsely icons and windows together.
+   - Fixed a problem where modules would get incorrect stacking
+     information if many windows were restacked at the same time.
+   - Fixed BugOpts parsing of more than one option at a time and
+     restoring of default value for the last option
+     in the command line when omitted.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Mon, 21 Sep 2009 23:44:45 -0500
+
+fvwm (1:2.5.27.ds-13) unstable; urgency=low
+
+  * Changed the ordering of build dependencies to prefer the new versions
+    of libreadline development libraries. libreadline5-dev is not yet
+    removed, in order to cater to the needs of backporters.
+  * Bug fix: "please provide a /usr/share/applications/fvwm.desktop",
+    thanks to Nicolas Trecourt                          (Closes: #543794).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sun, 13 Sep 2009 17:06:46 -0500
+
+fvwm (1:2.5.27.ds-12) unstable; urgency=low
+
+  * [475df49]: [master]: Fix up a bad conflict resolution decision
+
+ -- Manoj Srivastava <srivasta@debian.org>  Mon, 17 Aug 2009 12:53:52 -0500
+
+fvwm (1:2.5.27.ds-11) unstable; urgency=low
+
+  * A bug fixing release.
+  * [17df12b]: [master]: Fix up a bad conflict resolution decision When
+    merging from stolen-from-cvs, a bad conflict resolution decision was
+    made. This reverts the forms used to be closer to what upstream CVS
+    is using.
+    Bug fix: "fvwm-menu-directory variable naming conventions conflicts
+    between 2.5.27.ds-3 and 2.5.27.ds-10", thanks to Jan Lapka
+                                                     (Closes:  #537594).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sun, 16 Aug 2009 10:31:23 -0500
+
+fvwm (1:2.5.27.ds-10) unstable; urgency=low
+
+  * [17c3b2b]: [fvwm]: Move the example system.fvwm2rc into the
+    documentation dir A second copy of a system.fvwm2rc was shipped with
+    the package in order to facilitate reverting to package defaults in
+    case the configuration file in /etc/X11/fvwm was damaged.
+    Unfortunately, it ended up shadowing the configuration file, and is
+    now moved into the /usr/share/doc/fvwm/sample.fvwmrc directory, and
+    compressed, as is normal for the doc dir.
+    Bug fix: "wrong system-wide config file", thanks to Alex Romosan
+                                                      (Closes: #536607).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sun, 12 Jul 2009 11:01:20 -0500
+
+fvwm (1:2.5.27.ds-9) unstable; urgency=low
+
+  * A new bug fixing release
+  * [6c5f152]: fix _NET_WM_ICON_NAME retention on WM_ICON_NAME change
+  * [dfac5f6]: retain utf-8 window names on WM_NAME changes also when they
+    match the previous WM_NAME after charset conversion, and the utf-8
+    name was set after the window was first mapped.
+    Bug fix: "fvwm displays the title provided by WM_NAME instead of
+    _NET_WM_NAME", thanks to Vincent Lefevre           (Closes: #339586).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Fri, 10 Jul 2009 02:28:10 -0500
+
+fvwm (1:2.5.27.ds-8) unstable; urgency=low
+
+  * More changes to the Debian menu handling in the configuration file.
+  * [0e04470]: [fvwm]: Add a menuentry to refresh the Debian menu
+    If a user installs new packages, the system menudefs.hook file
+    defining the Debian menu changes. So far, there was no easy way to
+    refresh the menus for a running fvwm instance. This patch adds a
+    couple of entries into the Root menu to re-read the system
+    menudefs.hook file, or to (re)create and re-read a users local
+    menudefs.hook file using the Debian command updatge-menus. This allows
+    the menu definitions to be refreshed, providing the functionality of
+    the old fvwm-update-menus script, but using Fvwm commands.
+    Bug fix: "provide some version of fvwm-update-menus", thanks to Julian
+    Gilbey                                                   (Closes: #246902).
+  * [d933307]: [fvwm]: Add comments to deobfuscate the fvwm-menu-method script
+  * [eca9e68]: [topic--debian-menu]: Add menu options to refresh Debian menu
+    Add menu option lines to the example meny scripts, such that on Debian
+    systems (and only Debian systems), the user may refresh the Debian
+    menus system for a running fvwm after installing or removing packages
+    from the system. The user may re-read the system menu file, or
+    re-create and re-read a personal copy created by update-menus.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Thu, 09 Jul 2009 22:28:27 -0500
+
+fvwm (1:2.5.27.ds-7) unstable; urgency=low
+
+  * cherry picked changes from upstream
+  * [801b5cf]: Fix segmentation fault in FvwmEvent when RPlayHost
+    option is an undefined environment variable. Also wrap rplay functions
+    similar to other libraries to avoid ifdefs
+  * [0534288]: * Fix FvwmEvent handling of MX_REPLY (debian bug #438132)
+    Bug fix: "FvwmEvent segfault every time", thanks to Anders Boström
+                                                         (Closes: #438132).
+  * [63d4f07]: fix fvwmstyle X-resource usage
+  * [4eb46df]: Fix mapping of QT deferred maped windows (e.g.
+    skype profile windows)
+  * [cd99dea]: add support for event type MX_REPLY in perllib, and
+    request_query method
+  * [6b72394]: [topic--debian-menu]: No unconditionally load of Debian menu
+    Also, we used to expand the ImagePath unconditionally as well. Now
+    the sample configuration files read the menu definitions and expand
+    the imagepath only when there is a menu definition file to read, and
+    users can opt out of that behaviour.
+  * [fd4e000]: [topic--debian-menu]: Add Debian menu to all sample files
+    Debian technical policy states that all window manager should provide
+    access to the Debian menus. We have been patching the window manager
+    to read the menus and set the iamge path willy-nilly, but this
+    prevented users from optiong out of loading the menus, and from
+    expanding the Image paths. Also, upstream were unhappy about the code
+    divergence. So, this is the first part of removing the divergence and
+    instead using configuration files to ensure that the Debian menu
+    heirarchy is available.
+  * [58b579f]: [debiandir:fvwm]: Add a system.fvwm2rc file back
+    After 5 years, Debian reintroduces the default system configuration
+    file for fvwm, system.fvwm2rc, back to the distribution. But instead
+    of the old, ugly, mostly low usability default configuratgion, this
+    configuration file is derived from a flattened theme from fvwm-
+    themes, and uses most of the modern conventions of new fvwm
+    (colorsets, etc). The new system.fvwm2rc file also suports teh Debian
+    menusystem, and can serve as a decent starting point for modification
+    -- and should easily be converted into a fvwm theme again.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Thu, 09 Jul 2009 00:41:42 -0500
+
+fvwm (1:2.5.27.ds-6) unstable; urgency=low
+
+  * Bug fix: "fvwm fails to find certain icon files, ImagePath directive
+    seems broken.", thanks to Andreas Hartmann. The actual issue was more
+    complex than that. The problem was, that in order to satisfy the
+    policy directive that the Debian menu was available, fvwm always reads
+    the menu defs -- too early for any ImagePath directives in the config
+    file. There was no loss in functionality, since when the config file
+    was read, the ImagePath was set,and then when the menu definitions
+    were read the second time, the menu was setup correctly -- though the
+    first reading emitted the scary warnings.   The solution was to set a
+    default ImagePath that caters to the paths used in Debian packages,
+    thus doing away with scary warnings.                  (Closes: #449248).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Wed, 01 Jul 2009 01:27:10 -0500
+
+fvwm (1:2.5.27.ds-5) unstable; urgency=low
+
+  * 82b6b36]: Revert the iconman feature
+    The patch for this feature is buggy; and will be addressed in a future
+    release.
+    Bug fix: "FvwmIconMan is broken", thanks to Christian Ohm
+                                                         (Closes: #534725).
+  * [50c2b29]: [fvwm]: Fix an issue with compressing dir with symlinks
+    Some build daemons were reporting problems with gzip unable to
+    compress a dir with a symbolic link in it. Fix another issue where
+    the symlink could be possibly be dangling.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sat, 27 Jun 2009 23:54:00 -0500
+
+fvwm (1:2.5.27.ds-4) unstable; urgency=low
+
+  * [1cb2067]: [fvwm]: Add back readline5 dependency for FvwmConsole
+    With this, FvwmConsole has access to old commands which can be
+    accessed using the up/down arrow keys. Thanks to Thomas Adam.
+    Bug fix: "missing libreadline5 dependency", thanks to Jaimos F
+    Skriletz                                              (Closes: #527912).
+  * [83e9944]: [topic--iconman-enhancements]:
+    Currently only the focused and plain buttons can have different styles
+    and colors when selected, an iconified window's button always looks
+    like a plain window's button. I prefer to use different style and
+    colors for iconified windows even if they are selected. The commit
+    adds the 'IconAndSelectColorset' and 'IconAndSelectButton'
+    configuration options.  Bug fix: "support for IconAndSelectColorset
+    and IconAndSelectButton", thanks to Norbert Buchmuller
+                                                           (Closes: #529036).
+  * [ca176d6]: [fvwm]: dehiss the conflics line fvwmtabss -> fvwmtabs
+    Bug fix: "typo in &quot;Replaces:&quot; line (&quot;fvwmtabss&quot;)",
+    thanks to Justin B Rye                                (Closes: #529208).
+  * [2d9c27b]: [topic--doc-typo-fix]: Fix generated HTML pages
+    [59851df]: [fvwm]: Ensure all the HTML documentation is generated
+    and copied.
+    Bug fix: "Files under /usr/share/doc/fvwm are missing.", thanks to
+    tevaughan@gmail.com</a>;                      (Closes: #521294, #521295).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Wed, 24 Jun 2009 00:23:11 -0500
+
+fvwm (1:2.5.27.ds-3) unstable; urgency=low
+
+  * [49dd627]: [debiandir] Remvoe autogenerated files during clean
+  * [fa8d133]: [debiandir] use autoreconf instead of individual commands
+  * [8ed132d]: [autotools-cleanup] remove autogenerated files from git.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 28 Apr 2009 18:36:50 -0500
+
+fvwm (1:2.5.27.ds-2) unstable; urgency=low
+
+  * [debiandir:38e3f5b]: Honour nocheck in DEB_BUILD_OPTIONS
+    Bring into compliance with the latest policy version.
+  * [debiandirb8a6619]: Rearrange dependencies
+    There is nothing in fvwm that needs ncurses directly, so that
+    dependency can go. However, libx11-protocol-perl and perl-tk are
+    needed for FvwmTabs to work -- this is a module shipped with FVWM.
+  * [97b77ad]: Merge branch 'topic--debian'
+  * [9386fab]: Add missing "%" characters after menu icons
+    This caused the icons not to appear in the menus.
+  * [b79d425]: /etc/X11/fvwm/DebianMenu has been renamed
+    Update Script95 to match the renamed name of the autogenerated file.
+  * [f3d3578]: Fix a typo; StayOnTop -> StaysOnTop
+    With this change, and the two recent one, we have handled the major
+    issues with Script95                             Closes: Bug#501358
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sun, 15 Mar 2009 13:07:52 -0500
+
+fvwm (1:2.5.27.ds-1) unstable; urgency=low
+
+  * New upstream release
+     - New extended variable
+       $[w.visiblename]
+     - Style matching now honours the window's visible name which
+       means it can be matched before the real name, hence:
+         Style $[w.visiblename] Colorset 5
+        is now honoured.  Useful with IndexedWindowName as a style
+        option.
+    - New style InitialMapCommand allows to execute any command
+      when a window is mapped first.
+    - New option to PrintInfo, "bindings" which prints out all of
+      the Key, PointerKey, Mouse and Stroke bindings which fvwm
+      knows about.
+    - Fixed compilation without XRender support.
+    - Fixed handling of _NET_MOVERESIZE_WINDOWS requests.
+    - Fixed a bug in automatic detection mode of the style
+      MoveByProgramMethod.
+    - Fixed png detection when cross compiling.
+    - Fixed keeping fullscreen window mode over a restart.
+    - The style PositionPlacement now honours StartsOnPage.
+    - Reset signal handlers for executed modules and programs.
+    - Try to handle a bug an old version of the EWMH spec by
+      honouring both, the _NET_WM_STATE_MAXIMIZED_HORIZ hint and
+      the _NET_WM_STATE_MAXIMIZED_HORZ hitn.
+    - Fix the GNOME location prefix to application .desktop files.
+    - 'PositionPlacement UnderMouse' now forces the window
+      on-screen, just like the old UnderMousePlacement style option
+      used to.
+  * [ba7521b]: Merge branch 'topic--emulator'
+    [acfff93]: Merge branch 'topic--debian'
+    [5944880]: Merge branch 'upstream' into topic--debian
+    [29a3be6]: Merge branch 'upstream' into topic--emulator
+    [ad3be09]: Delete upstream debian directory.
+    [822ca74]: Merge branch 'upstream' into topic--debian
+    [172c11e]: Merge branch 'upstream' into topic--emulator
+    [e820738]: Imported fvwm_2.5.27.orig.tar.gz
+
+ -- Manoj Srivastava <srivasta@debian.org>  Wed, 25 Feb 2009 02:05:13 -0600
+
+fvwm (1:2.5.26-2) unstable; urgency=low
+
+  * [debiandir:250b152]: Update the standards version, as well as the VCS
+    browser field
+  * [debiandir:e2d7ea6]: Remove the gtk build dependencies, and do not
+    look for gtk The menus used in Fvwm can either be native, or, using
+    FvwmGTK, be GTK-based alternatives. FvwmGtk only has options to define
+    the content of the menus and dialogs. The builtin menus offer many
+    features which the GTK menus currently don’t have. None of the
+    features of the builtin window-list have been implemented. FvwmGtk
+    module requires GTK+ and optionally GDK-Imlib and GNOME libraries.
+    GDK-Imlib library that is a part of Imlib version 1 is used to have
+    images. Most of thee libraries are not obsolete, and development of
+    FvwmGtk module does not seem to be keeping up. Note, fvwm itself has
+    an ability to support GNOME Window Manager hints (which is enabled by
+    default), this has nothing to do with GNOME library support compiled
+    into FvwmGtk (which is autoprobed and used if passed). In this commit,
+    we disable autoprobing of GTK+, Imlib and GNOME libraries. This is a
+    imperceptible change in functionality.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sun, 21 Dec 2008 11:38:00 -0600
+
+fvwm (1:2.5.26-1) unstable; urgency=low
+
+  * New upstream release.
+    New features:
+    - New MenuStyle option VerticalMargins.
+    New module features:
+    - FvwmButtons: New button alignment option: top.
+    Bug fixes:
+    - Fixed crash in ARGB visual detection code.
+    - Fixed compilation without XRender support.
+    - Fixed drawing of background pictures in menu items and titles.
+    - Fixed hadling of shaped windows.
+    - Fixed a 64-bit bug in the EWMH code.
+  * Moved to the new streamlined build mechanism
+  * Removed the fvwm-gnome package
+  * Record the fact that this package has moved to a git repository.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Thu, 29 May 2008 12:05:28 -0500
+
+fvwm (1:2.5.25-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #438132)
+     - Handle the STATE_ADD command of the EWMH _NET_WM_STATE
+       message from version 1.3 of the EWMH spec.
+     - Support transparency in ARGB windows
+  * Bug fixes:
+   - Fixed problem with windows disappearing when created
+     unless the style Unmanaged was used.                     (Closes: #443573)
+   - Edge move delay was used as resistance for the top edge. (Closes: #465454)
+   - Fixed a parsing problem of the screen argument of the
+     SnapAttraction style.
+   - Some html documentation files were not installed.
+   - Fixed a memory leak in internationalized font handling.
+   - Fixed a bug in MinOverlap placement.                      (Closes: #458163)
+   - Fixed the StickyAcrossPages style in the FvwmPager.
+   - Fixed the determination of the X charset on UTF-8 systems.
+   - Fixed a crash when certain EWMH messages were sent to
+     unmanaged windows.
+   - Fixed a memory leak in multibyte codepage code.
+   - Ignore the EWMH staysontop and staysonbottom hints if the
+     EWMHIgnoreStackingOrderHints style is used.
+   - Fixed a sporadic crash when the root background set by gnome,
+     fvwm-root, esetroot etc. changes and a root transparent
+     colour set is used.
+   - Fixed spradic crash in modules with root transparent
+     background from colour sets.
+   - Fixed a possible crash if the last active module fails.
+  * Bug fix: "fvwm: should not conflict against fvwm-gnome", thanks to
+    Philipp Kern. Yes, there should have been a versioned conflicts, I
+    think.                                                     (Closes: #470149)
+  * Bug fix: "Transition from fvwm-gnome does not work smoothly", thanks
+    to Heikki Kantola. This is the same bug as the one above.  (Closes: #468464)
+
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 18 Mar 2008 23:29:12 -0500
+
+fvwm (1:2.5.24-1) unstable; urgency=low
+
+  * New upstream release
+   - Disabled paging during interactive resize operations by
+     default (see 2.5.20) as it is annoying to many people.
+   - New style command options:
+       EdgeMoveResistance
+       EdgeMoveDelay
+       EdgeResizeDelay
+       SnapGrid
+       SnapAttraction
+     that replace the now obsolete commands EdgeResistance,
+     SnapGrid and SnapAttraction.  The EdgeResistance command has
+     a new syntax with only one argument.
+   - New command MenuCloseAndExec for menu bindinngs that can be
+     used to trigger certain commands from a menu without an
+     associated item.  For example, with
+       Key F1 MTI[]-_ A MenuCloseAndExec Menu RootMenu
+     the RootMenu can be opened from any other menu by pressing
+     F1.
+  * Bug fixes:
+   - Sometimes a window jumped by half the screen's size when
+     moving with the mouse and hitting the border of the desktop.
+   - Fixed the "screen w" argument of the Move and other commands.
+   - Clicking on a menu title did not close the menu by default.
+   - Temporary files in FvwmPerl overwrote each other.
+  * The segmentation fault in ewmh_events has been fixed in this
+    version.                                   (Closes: #463384)
+  * Change the dependency to gnome1 libraries; (Closes: #460761)
+    This also means that there was no point in having a separate fvwm
+    package where FvwmGtk was a gnome entity; since it was never ported to
+    gnome2. So, fvwm-gnome is now a dummy package; and is meant to
+    transition to plain old fvwm.
+  * Removed the debconf question; since the upgrade would be directly from
+    a system installed in 2003 for the question to be valid.
+  * Move _all the html files into the documentation directory, thanks to
+    Christer Andersson.                        (Closes: #455473)
+
+ -- Manoj Srivastava <srivasta@debian.org>  Thu, 07 Feb 2008 09:57:14 -0600
+
+fvwm (1:2.5.23-2) unstable; urgency=low
+
+  *
+  * Bug fix: "fvwm: postinst fails", thanks to Mario "BitKoenig"
+    Holbe. Added a Section field to doc-base file. Funny thing is, this
+    did not fail to install for me -- I wonder why.             (Closes: #443511).
+  * Bug fix: "fvwm: unnecessary ~/.fvwm/ creation", thanks to Neil W. Van
+    Dyke. Turns out that this latest version does not create a .fvwm/
+    directory.                                                  (Closes: #193761).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Fri, 21 Sep 2007 20:37:58 -0500
+
+fvwm (1:2.5.23-1) unstable; urgency=low
+
+  * New upstream release. Bug fix: "fvwm: Please update to current
+    upstream version!", thanks to Sven Geggus                  (Closes: #441789).
+  * New features:
+    - New Style command options:
+      StartShaded
+      UnderMousePlacementHonorsStartsOnPage
+      UnderMousePlacementIgnoresStartsOnPage
+      !MinOverlapPlacementPenalties
+      !MinOverlapPercentPlacementPenalties
+      MinWindowSize
+    - SVG (scalable vector graphics) image loading support.
+    - New extended variables
+        $[w.iconfile.svgopts]
+        $[w.miniiconfile.svgopts].
+    - Added suffix 'w' to the arguments of the Move command and
+      similar.  It is now possible to add multiple shifts to a
+      window position, e.g. "50-50w 50-50w" for the center of the
+      screen.
+    - Removed UnderMousePlacement and CenterPlacement.  Use
+      "PositionPlacement Center" and "PositionPlacement UnderMouse"
+      instead.
+    - Documentation in HTML format.
+    - Replaced "UseListSkip" with "UseSkipList" & "OnlyListSkip" with
+      "OnlySkipList" in WindowList command. (Old options deprecated.)
+    - New subject ImageCache for PrintInfo command.
+    - The new commad EchoFuncDefinition prints a function's
+      definition to the console for debugging purposes.
+    - The CursorStyle command can now load PNG and SVG images as
+      mouse cursors.  New x and y arguments to specify the
+      hot spot.  Also, it is now possible to load non-monochrome
+      cursors and cursors with partial transparency.
+  * New module features:
+     - FvwmScript: New instructions: ChangeWindowTitle and
+       ChangeWindowTitleFromArg.
+  * Bug Fixes:
+     - Fixed FvwmButton's button placement algorithm broken in
+       2.5.22.
+     - Windows with aspect ratio no longer maximize past the screen
+       edges.
+     - Fixed CenterPlacement with Xinerama screens.
+     - Fixed CascadePlacement with title direction west and east
+     - Windows no longer unstick when going to fullscreen mode.
+     - Fixed crash when raising/lowering a destroyed window.
+     - Fixed expansion of $[n-] and $[*], broken in 2.5.20.
+     - Fixes for resizing shaded windows and windows with a gravity
+       other than northwest.
+     - Fixed CursorStyle POSITION, broken since 2.3.24.
+     - The hi, sh and fgsh colors in colorsets are no longer replaced
+       by computed values if not explicit set on the same line as the
+       bg, or for fgsh fg, changes. (Closes: #3359)
+     - FvwmButtons now redraws stretched button backgrounds correctly
+       on partial expose.
+     - Windows with circular transient for hints may no longer crash
+       fvwm with StackTransientParent style.
+     - FvwmPager now displays windows that are StickyAcrossPages
+       correctly.
+     - Fixed a possible crash with modules closing down.
+     - Fixed broken demo script fvwm_make_browse_menu.sh.
+     - The conditon following a comma separator without whitespace
+       padding was previously ignored if the presiding condition was
+       multi-worded.
+     - Various FvwmButtons drawing problems.
+     - Window movement or resizing triggered by an EWMH message now
+       honours the FixedSize and FixedPosition window styles.
+     - Properly generate leave_window and enter_window events for
+       the root window in FvwmEvent.
+     - Fixed crash in UTF8 code.
+     - Fixed parsing of the PropertyChange command.
+     - Fixed windowlist crash when combining CurrentAtEnd with
+       IconifiedAtEnd and all windows are iconified.
+  * Bug fix: "fvwm: debia/copyright: update download URL location", thanks
+    to Jari Aalto. Also updated copyrights for this release. (Closes: #438439).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Thu, 20 Sep 2007 17:35:51 -0500
+
+fvwm (1:2.5.21-1) unstable; urgency=low
+
+  * New upstream release.
+  * New features:
+   - The command Scroll can now be used for interactive scrolling.
+   - New Style options: StippledIconTitle, !StickyStippledTitle,
+     and !StickyStippledIconTitle.
+   - Full support for menu context (M) key and mouse bindings.  See
+     the section Menu Bindings in the man page for details.
+   - Hilighted menu backgrounds now use pixmaps gradients and
+     transparency from their related colorset.
+   - New window conditions: StickyIcon, StickyAcrossPagesIcon and
+     StickyAcrossDesksIcon.
+  * Changed features:
+   - "Mouse n M N" is no longer used to disable or remap the
+      builtin tear off menu button. See the section Tear Off Menus
+      for details on replacement commands.
+  * Bug Fixes:
+   - Fixed Tile...Placement styles (SmartPlacement) that were
+     broken in 2.5.20.
+   - FvwmWinList: fix problem with window name/button mixups during
+     Init/Restart of fvwm. (Closes: #1393)
+   - It is now possible to switch the viewport while resizing
+     windows if "EdgeScroll 0 0" is set.
+   - Fixed disappearing windows when aborting interactive resizing
+     of maximized windows when unmaximizing them later.
+   - Fixed disappearing windows when moving maximized windows and
+     unmaximizing them later.
+   - Fixed calculation of final location with MoveToPage and
+     MoveToScreen with windows to the left or top of the viewport.
+   - 64-bit architecture fix in FvwmProxy.
+   - FvwmForm now work with balanced quoted command for Timeout.
+   - FvwmPager correctly updates on window desk change.
+   - FvwmIconBox: fixed problem with IconColorset's background
+     color change not being applied immediately.
+   - Allow FvwmConsole to run a terminal via rxvtc or urxvtc.
+     FvwmConsole dies if no client connects within one minute.
+   - Expansion of variables in FvwmTaskBar launch button commands
+     fixed.
+   - Fixed a race condition with applications raising their own
+     transient windows in certain ways. (Apple Shake, kphotoalbum)
+   - FvwmIdent reports the correct geometry if the window has its
+     title at the left or right side.
+   - Fixed an infinite loop when deiconifying windows in a group
+     via a different window than the initially iconified.
+   - FvwmCommand now reports "end windowlist" and "end configinfo".
+   - FvwmCommand now prints config info split on lines.
+   - FvwmTaskBar no longer gets lost with trailing whitespace after
+     geometry specification.
+   - Fixed a window size problem if the aspect ratio is set (e.g.
+     mplayer).
+   - Decorations now update when unmanaged windows take focus, and
+     not FlickeringQtDialogsWorkaround is enabled.
+   - FvwmPager again allows movement of windows added before a
+     page change.
+   - fvwm no longer crashes on 1 and 4 bit displays. (Closes: #1677)
+   - EWMH desktops now correctly handles FPClickToFocus. (Closes: #1492)
+   - Security fix in fvwm-menu-directory. (CVE-2006-5969)
+  * Bug fix: "fvwm crashes on 1-bpp and 4-bpp displays", thanks to Andre
+    Majorel. Fixed upstream.                              (Closes: #287588).
+  * Bug fix: "When starting fvwm, FvwmWinList contains random windows",
+    thanks to Vincent Lefevre. Fixed upstream.            (Closes: #263945).
+  * Bug fix: "moving with middle mouse button in fvwm pager does not
+    work", thanks to Sebastian Miele. I can no longer reproduce this with
+    the new upstream, so I think this has been fixed.     (Closes: #402525).
+  * Bug fix: "fvwm: does not display fr_FR.UTF-8 properly and other",
+    thanks to Bill Allombert. This too seems to work -- I added an menu
+    entry called "More Gämes", and with UTF-8 titles, and that works. The
+    font used is critical -- I use ``MenuStyle * Font
+    "Shadow=2:xft:Sans:Bold:size=11:antialias=True"''  which shows up
+    fine.                                                 (Closes: #392812).
+  * Bug fix: "fvwm: causes spurious events to be generated", thanks to
+    Paul Vojta. This might have been fixed in this new release -- I can't
+    reproduce it, and neither can upstream, with this versions of fvwm.
+                                                         (Closes: #356000).
+  * Bug fix: "/etc/menu-methods/fvwm should respect l10n menu entries",
+    thanks to Michelle Konzack. Don't add hotkeys to internationalized
+    menu entries.                               (Closes: #405047, #406171).
+  * Bug fix: "gaim 1.4.0 steals focus when popping up the dialog window",
+    thanks to Vincent Bernat. This seems to have been fixed in the new
+    version.                                             (Closes: #318766).
+  * Added XS-VCS-Arch and XS-VCS-Browse entries to the control file.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 17 Apr 2007 13:36:46 -0500
+
+fvwm (1:2.5.18-3) unstable; urgency=high
+
+  * Bug fix: "[INTL:ta] debconf PO translations for the package fvwm",
+    thanks to Tirumurti Vasudevan             (Closes: #412819, #412821).
+  * Bug fix: "[INTL:ml] Malayalam translation update", thanks to Praveen A
+                                                       (Closes: #412699).
+  * Bug fix: "fvwm: [INTL:ru] Russian debconf templates translation",
+    thanks to Yuri Kozlov                              (Closes: #412550).
+  * Bug fix: "fvwm : [INTL:pt] Portuguese translation for debconf
+    messages", thanks to Traduz ML                     (Closes: #412425).
+  * Bug fix: "[INTL:gl] Galician debconf templates translation for fvwm",
+    thanks to Jacobo Tarrio                            (Closes: #412364).
+  * Bug fix: "fvwm: [INTL:es] Spanish po-debconf translation", thanks to
+    Javier Fernández-Sanguino Peña                     (Closes: #403423).
+  * Bug fix: "suggests a package that doesn't exist: fvwm-themes", thanks
+    to Gonéri Le Bouder                                (Closes: #408312).
+  * Bug fix: "tighten build dependencies on libfribidi", thanks to
+    Michelle Konzack                                   (Closes: #407174).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Fri,  2 Mar 2007 01:48:03 -0600
+
+fvwm (1:2.5.18-2) unstable; urgency=high
+
+  * Apply better escapes for dir names in the menu dir scanner.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Fri, 10 Nov 2006 23:45:55 -0600
+
+fvwm (1:2.5.18-1) unstable; urgency=low
+
+  * New upstream release.
+   - If a window started fullscreen, leaving fullscreen state now
+     properly unmaximizes and resizes the window.
+   - Fixed the ForeColor/HilightFore styles that were broken in
+     2.5.17.
+   - FvwmPager can now move icons with the !IconTitle style.
+   - Fixed drawing of icons that are moved to a different desk.
+   - FvwmPager no longer tries to move non-movable windows.
+   - FvwmPager now moves all windows as user requests.
+   - FvwmPager no longer displaces windows with title and border
+     sizes on moves.
+   - TestRc now correctly matches Break, and $[cond.rc] is
+     expanded for Break.
+   - Fixed several 64-bit architecture problems with
+     XGetWindowProperty().  Xine works much better on 64-bit
+     machines.
+   - Fixed handling of ClickToFocusPassesClick with the EWMH
+     desktop (e.g. using nautilus).
+   - Fixed handling of windows that are unmapped and mapped again
+     too fast (e.g. fpga_editor).
+  * Bug fix: "HilightFore Style option no longer works", thanks to Brendan
+    O'Dea                                                 (Closes: #383435).
+  * Bug fix: "fvwm: should suggest perl packages for FvwmTabs", thanks to
+    Sylvain Sauvage                                       (Closes: #382338).
+  * Bug fix: "fvwm: some menu breakage", thanks to Paul Vojta
+                                                          (Closes: #384695).
+  * Bug fix: "fvwm: MenuStyle &lt;fontcolor&gt; option ignored (Black used
+    instead)", thanks to Nicola Manini                    (Closes: #385952).
+  * Bug fix: "fvwm: segfaults at startup when Xlib does not like locale",
+    thanks to Henning Makholm                             (Closes: #384729).
+  * Bug fix: "update-menu should respect $FVWM_USERDIR if set", thanks to
+    Michelle Konzack                                      (Closes: #382517).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 12 Sep 2006 01:19:54 -0500
+
+fvwm (1:2.5.17-1) unstable; urgency=low
+
+  * New upstream release
+  * Bug fix: "fvwm: EWMH acronymn is erroneous in the description field.",
+    thanks to Thomas Adam                                    (Closes: #380025).
+  * New features:
+     - New MenuStyle options TitleFont, TitleColorset and
+       HilightTitleBack.
+     - New command PressButton in module FvwmButtons for being able
+       to emulate button press via other means than the mouse.
+     - New wrap options to EdgeScroll command for wrapping with pixel
+       distances.
+     - New Style option UnderMousePlacement.
+     - Unused arguments to Style options generate warnings.
+     - The name style names match against can be augmented by the
+       X-resource "fvwmstyle".
+     - New options, Reverse and UseStack, to All command.
+     - WindowShade can now reshade windows using the Last direction.
+     - Positional parameters to complex functions can now be expanded
+       using $[n], $[n-m], $[n-] and $[*] expressions.
+     - The width and height arguments of the Resize command now
+       accept the prefix 'w' to allow resizing relative to the
+       current window size.
+     - New command ModuleListenOnly.
+     - New "Periodic" option added to Schedule command.
+  * Bug Fixes:
+     - Fixed detection of running non-ICCCM2 wm (Closes: #3151).
+     - Fixed drawing of menus with the sidepic on the right.
+     - EdgeScroll no longer divides pixel distances >1000 by 1000.
+       (Closes: #3162)
+     - The configure script can now cope with four-part version
+       numbers when detecting some libraries.
+     - The WarpToWindow command followed by Move in a complex
+       function now uses the correct pointer position.
+     - The menu style TitleWarp does no longer warp the pointer for
+       root menus (as it is documented).
+     - Fixed detection of safe system version of mkstemp.
+     - Fixed the conditions Iconifiable, Fixed, FixedSize,
+       Maximizable and Closable.
+     - Fixed problem with window outline and placement position
+       running out of sync.
+     - FvwmConsole no longer conflicts with Cygwin stdio (Closes: #3772).
+     - FvwmGtk now configures correctly on Cygwin (Closes: #3772).
+     - Fixed tempfile vulnerabilities in FvwmCommand.
+  * Bug fix: "Default Charset is wrong", thanks to Jonny. See
+    http://www.fvwm.org/cgi-bin/fvwm-bug/incoming?id=1647 for details.
+                                                           (Closes: #360418).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue,  8 Aug 2006 20:13:20 -0500
+
+fvwm (1:2.5.16-2) unstable; urgency=low
+
+  * Synchronized from CVS, since we have a few bugs that were addressed
+    here.
+  * Bug fix: "fvwm starts when other window manager is already active",
+    thanks to Bernhard R. Link                          (Closes: #328621).
+  * Bug fix: "fvwm: Window title buttons and viewport scrolling stop
+    working.", thanks to Per Bojsen                     (Closes: #296348).
+  * Bug fix: "fvwm clashes with fvwmtabs", thanks to Micha Feigin
+                                                        (Closes: #350560).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue,  7 Feb 2006 18:20:33 -0600
+
+fvwm (1:2.5.16-1) unstable; urgency=low
+
+  * New upstream release.
+  * New features:
+    - If the pointer can not be grabbed in functions, a message is
+      printed to the console instead of beeping.
+    - Variables can be nested, like $[desk.name$[desk.n]].
+    - Obsolete one-letter variables work, but generate warnings now.
+    - Windows can be placed by any button (now also >3).
+    - It is now possible to redefine the buttons usable to finish
+      window movement and manual placement.
+    - New window condition PlacedByButton.
+    - MenuStyle pairs can be negated by prefixing '!'.
+    - New generic tabbing module - FvwmTabs.
+    - New Style option: EWMHIgnoreWindowType.
+    - New MenuStyle options: MouseWheel, ScrollOffPage and
+      TrianglesUseFore.
+    - New option "screen" to Move and ResizeMove commands to allow
+      specifying the target Xinerama screen.
+  * Bug Fixes:
+    - Supported a new fribidi version 0.10.5 in addition to 0.10.4.
+    - Better look for windows with "BorderStyle TiledPixmap".
+    - Some EWMH-related 64-bit fixes.
+    - Fixed segmentation fault when replacing title of title only
+      menus (Bug #1121).
+    - Fixes for resizing of shaded windows and resizing/moving
+      windows with complex functions.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sun, 22 Jan 2006 00:46:42 -0600
+
+fvwm (1:2.5.14-6) unstable; urgency=low
+
+  * Try and see if build depending on fontconfig makes adifference, since
+    the configure script does seem to look for it.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 20 Dec 2005 23:30:35 -0600
+
+fvwm (1:2.5.14-5) unstable; urgency=low
+
+  * Use modular X11 packages in build dependency.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sat, 17 Dec 2005 00:22:37 -0600
+
+fvwm (1:2.5.14-4) unstable; urgency=low
+
+  * fvwm: debconf-updatepo has not been launched. Well, updatepo is always
+    called during build, so this is not as serious a bug as it appears. I
+    am also not in favour of modifying things on disk during clean --
+    clean returns the directory to the state it was in before. So, this is
+    a new upload, with debconf-updatepo already run,     (Closes: #336203).
+  * fvwm: French debconf templates translation update, thanks to Jean-Luc
+    Coulon.                                              (Closes: #336300).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sun, 30 Oct 2005 10:14:17 -0600
+
+fvwm (1:2.5.14-3) unstable; urgency=low
+
+  * Bug fix: "fvwm: should depend on gdk-imlib11 instead of gdk-imlib1",
+    thanks to Domenico Andreoli                         (Closes: #332409).
+  * Bug fix: "fvwm: [INTL:sv] Swedish debconf templates translation",
+    thanks to Daniel Nylander                           (Closes: #333794).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Thu, 20 Oct 2005 12:36:45 -0500
+
+fvwm (1:2.5.14-2) unstable; urgency=low
+
+  * Bug fix: "please rebuild with libreadline5-dev as build dependency",
+    thanks to Matthias Klose                           (Closes: #326359).
+  * Bug fix: "please rebuild with libreadline5-dev as build dependency",
+    thanks to Matthias Klose                           (Closes: #326360).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Thu, 22 Sep 2005 08:36:47 -0500
+
+fvwm (1:2.5.14-1) unstable; urgency=low
+
+  * New upstream release
+      * New features:
+         - Fvwm now officially supports 64-bit architertures.
+         - New Test conditions EnvIsSet, EnvMatch, EdgeHasPointer and
+           EdgeIsActive.
+         - New window condition FixedPosition.
+      * New module features:
+         - FvwmPerl module supports window context when preprocessing.
+         - FvwmPerl module accepts new --export option that by default
+           defines two fvwm functions "Eval" and ".", to be used like:
+             FvwmPerl -x
+             Eval $a = $[desk.n] - 2; cmd("GotoDesk 0 $a") if $a >= 0
+             . Exec xmessage %{2 + cos(0)}%    # embedded calculator
+         - New FvwmProxy option ProxyIconified.
+         - New FvwmTaskBar option Pad to control the gap between
+           buttons.
+      * Bug Fixes:
+         - Fixed a Solaris compiler error introduced in 2.5.13.
+         - Fixed a hang with layers set by applications (e.g. AbiWord).
+         - GotoDesk with a relative page argument now wraps around at
+           the end of the given range as documented. (Bug #1396).
+         - PopupDelayed menu style option was not copied on
+           CopyMenuStyle.
+         - Transparent Animated menus with non-transparent popup were
+           not animated correctly.
+         - Supported euc-jp class of encodings.
+         - A window's default layer is no longer set to 0 durin a
+           restart.
+         - Fixed an annoying MouseFocus/SloppyFocus problem in
+           conjunction with EdgeResistance + EdgeScroll (sometimes a
+           window did noit get the focus as it should have). This
+           problem first occured in 2.5.11.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Fri, 26 Aug 2005 00:38:42 -0500
+
+fvwm (1:2.5.13-0.CVS.2005.08.08.01-1) unstable; urgency=low
+
+  * New upstream CVS version.
+   - Fvwm now officially supports 64-bit architertures.
+  * Fixed a Solaris compiler error introduced in 2.5.13
+  * Fixed a hang with layers set by applications (e.g. AbiWord).
+  * Bug fix: "GotoDesk doesn't wrap around like docs say it should",
+    thanks to Chip Salzenberg. GotoDesk with a relative page argument now
+    wraps around at the end of the given range as documented. (Closes: #238737).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Mon,  8 Aug 2005 20:55:52 -0500
+
+fvwm (2.5.130.CVS.2005.07.19.01-1) unstable; urgency=low
+
+  * New upstream CVS version.
+  * Bug fix: "fvwm broken properties on 64-bit hosts [PATCH]", thanks to
+    Marc Lehmann                                         (Closes: #318504).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 19 Jul 2005 21:58:26 -0500
+
+fvwm (2.5.13-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 19 Jul 2005 15:58:22 -0500
+
+fvwm (2.5.12.0.CVS.2005.07.09.01-1) unstable; urgency=low
+
+  * Bug fix: "FTBFS: configure is not executable", thanks to Christian
+    T. Steigies. The problem was that since the CVS upstream does not
+    contain ./configure, it was created by the diff.gz -- and that leaves
+    all the autoconf related scripts non-executable. Added logic to
+    ./debian/rules to ensure that the scripts are made executable before
+    use, iff they exist and are not already executable.  (Closes: #317565).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sat,  9 Jul 2005 15:06:06 -0500
+
+fvwm (2.5.12.0.CVS.2005.07.08.01-1) unstable; urgency=low
+
+  * New release snagged from CVS.
+  Fixes
+   - The MoveToPage command did not work without arguments in
+     2.5.11 and 2.5.12.
+   - Mouse/Key command no args possible core dump.
+   - Direction with no args possible core dump.
+   - FvwmScript periodic tasks run too often.
+   - Perl modules did not work on 64 machines.
+   - FvwmDebug did not report any extended messages.
+   - fvwm-menu-desktop supports mandriva.
+   - fvwm-menu-desktop when verifying executable, allow full path.
+  Features
+   - FvwmIconMan: MaxButtonWidth and MaxButtonWidthByColumns options.
+   - FvwmIconMan: added tool tips with Tips, TipsDelays, TipsFont,
+     TipsColorset, TipsFormat, TipsBorderWidth, TipsPlacement,
+     TipsJustification and TipsOffsets options.
+   - FvwmButtons: PressColorset & ActiveColorset options for
+     _individual_ buttons.
+  * Bug fix: "fvwm segfaults when pressing Ctrl while waiting", thanks to
+    Hugo Haas. Fixed in this release.                       (Closes: #278443).
+  * Bug fix: "/usr/bin/fvwm2: Click into windows doesn't raise them /
+    FPClickRaisesFocused broken?", thanks to Thorsten Gunkel
+                                                            (Closes: #291291).
+  * Bug fix: "fvwm: post installation script error", thanks to Adrian
+    Mariano.                                                (Closes: #290601).
+  * Bug fix: "fvwm: 'Mouse 1 T A Move' does not work as expected", thanks
+    to Alexander Kotelnikov                                 (Closes: #293368).
+  * Bug fix: "fvwm: Fullscreen should not require
+    EWMHUseStackingOrderHints style", thanks to Per von Zweigbergk
+                                                            (Closes: #276434).
+  * Bug fix: "fvwm: SnapAttraction and SnapGrid do not work any more",
+    thanks to Samuel Thibault                               (Closes: #274908).
+  * Bug fix: "fvwm: Fvwm is ICCCM2 compliant now.", thanks to Thomas Adam
+                                                            (Closes: #305080).
+  * Bug fix: "INTL:vi", thanks to Clytie Siddall            (Closes: #311751).
+  * Bug fix: "fvwm: [INTL:de] German PO file corrections", thanks to Jens
+    Seidel                                                  (Closes: #313712).
+  * Bug fix: "please add &quot;Style OpenOffice* NoFuncHint&quot; to
+    default settings", thanks to Tim Froggatt               (Closes: #306991).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sat,  9 Jul 2005 09:10:31 -0500
+
+fvwm (2.5.12-5) unstable; urgency=low
+
+  * Bug fix: "fvwm: FvwmProxy man page formatting typo .IP", thanks to
+    Kevin Ryde                                         (Closes: #285386).
+  * Bug fix: "fvwm: fvwm-menu-desktop man page formatting typo", thanks to
+    Kevin Ryde                                         (Closes: #285387).
+  * only chmod menu methods if the file exists.        (Closes: #296944).
+
+  * Bug fix: "FTBFS (maybe): configure fails to detect gdk-imlib", thanks
+    to Chip Salzenberg. Based on  a patch by Harald Dunkel
+                                                        (Closes: #238725).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Thu, 17 Mar 2005 17:34:11 -0600
+
+fvwm (2.5.12-4) unstable; urgency=low
+
+  * Bug fix: "fvwm: [INTL:pt_BR] Please consider adding the attached
+    Brazilian Portuguese translation", thanks to Andre Luis Lopes
+                                                     (Closes: #279412).
+  * Bug fix: "fvwm: Japanese po-debconf template translation (ja.po)",
+    thanks to Hideki Yamane                           (Closes: #281071).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Fri, 19 Nov 2004 11:01:44 -0600
+
+fvwm (2.5.12-3) unstable; urgency=low
+
+  * Well, libfribidi0 0.10.4-5 had a busted shlibs file, which meant that
+    the buildd's built fvwm which was un-installable.  Added a build
+    conflict with that version, hoping that that shall fix things.
+  * Bug fix: "fvwm 2.5.12-2 depends on libfribidi0 (&gt;= 0.10.5) on
+    powerpc", thanks to Vincent Bernat                   (Closes: #278825).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Fri, 29 Oct 2004 13:31:55 -0500
+
+fvwm (2.5.12-2) unstable; urgency=low
+
+  * Bug fix: "fvwm: setup95 does not find KDE", thanks to Yann Dirson
+                                                           (Closes: #247594).
+  * Bug fix: "fvwm: OpenOffice Impress Slide Show fails to fill Full
+    Screen", thanks to Marten van Kerkwijk. This was actually fixed in the
+    last upload (see http://www.hpc.uh.edu/fvwm/archive/0406/msg00041.html),
+    But has only been tested recently.                     (Closes: #269533).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 26 Oct 2004 13:33:12 -0500
+
+fvwm (2.5.12-1) unstable; urgency=low
+
+  * New upstream release.
+    * New commands: - EdgeLeaveCommand
+    * New module features: - FvwmIconMan: ShowOnlyFocused option.
+  * fixed xemacs growing or shrinking when title height changed;
+  * use type XPointer for last argument of predicate procedures for
+      XCheckPeekIfEvent and XCheckIfEvent, not char *, fixed core dump
+  * removed useless and broken SETM_ macros
+  * fixed resetting user states
+
+ -- Manoj Srivastava <srivasta@debian.org>  Wed,  6 Oct 2004 14:41:17 -0500
+
+fvwm (2.5.11-1) unstable; urgency=low
+
+  * New upstream release. Please see the NEWS file for details.
+  * Bug fix: "[l10n] Initial Czech translation of fvwm debconf messages",
+    thanks to Miroslav Kure                               (Closes: #273519).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Fri,  1 Oct 2004 02:13:40 -0500
+
+fvwm (2.5.10-13) unstable; urgency=medium
+
+  * priority medium, since it fixes the placement bug, and stops filling
+    up .xsession-errors with debug messages.
+  * Bug fix: "[INTL:nl] updated dutch po-debconf translation", thanks to
+    Luk Claes                                             (Closes: #270788).
+  * Bug fix: "fvwm: Style Mozilla* StartsOnPage starts on the wrong page",
+    thanks to Jeroen Nijhof. The problem was diagnosed, and fixed, by Paul
+    Vojta, who also reported the problem and the fix upstream.
+                                                           (Closes: #248231).
+  * Bug fix: "/usr/share/xsessions/fvwm.desktop", thanks to David
+    Schweikert                                             (Closes: #266092).
+  * Bug fix: "fvwm: French program translation", thanks to Jean-Luc Coulon
+    (f5ibh)                                                (Closes: #265931).
+  * Bug fix: ".fvwm2rc missing from
+    /usr/share/doc/fvwm/sample.fvwmrc/manoj", thanks to Christian Ohm
+                                                            (Closes: #267849).
+  * Bug fix: "fvwm 2.5.10-9 filling up .xsession-errors", thanks to
+    Michelle Konzack                                        (Closes: #271481).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Wed, 22 Sep 2004 19:43:40 -0500
+
+fvwm (2.5.10-12) unstable; urgency=low
+
+  * Bug fix: "Pixmaps, icons, etc. don't work in remote fvwm", thanks to
+    Norbert Buchmuller                                  (Closes: #250521).
+  * Bug fix: "fvwm: FvwmTaskBar &amp; FvwmButtons crash when managing
+    remote display", thanks to Norbert Buchmuller       (Closes: #251539).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Fri, 13 Aug 2004 22:54:18 -0500
+
+fvwm (2.5.10-11) unstable; urgency=low
+
+  * Bug fix: "fvwm: menu-method fails when using dpkg-reconfigure", thanks
+    to Jaume, who also figured out the cause.             (Closes: #261574).
+  * Bug fix: "fvwm: update-menus fails", thanks to Mykola A. Nickishov
+                                                          (Closes: #264225).
+  * Added german translation.
+  * Bug fix: "fvwm-root scrambles XRoot with --retain-pixmap even if
+    pixmap does not exist", thanks to Niv ALTIVANIK. I backported the
+    changes made in to CVS instead.                       (Closes: #263533).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Wed, 11 Aug 2004 14:36:20 -0500
+
+fvwm (2.5.10-10) unstable; urgency=low
+
+  * NMU ACK: "fvwm: FTBFS: build target requires root privs", thanks to
+    Tollef Fog Heen                                   (Closes: #258122).
+  * Bug fix: "fvwm: Updated German translation of the debconf templates",
+    thanks to Erik Schanze                            (Closes: #256620).
+  * No longer call the deprecated wm-menu-config script.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Wed, 21 Jul 2004 11:17:10 -0500
+
+fvwm (2.5.10-9.1) unstable; urgency=low
+
+  * NMU (at maintainer's request)
+  * Bug fix: Replace make_directory with mkdir -p in the config target. This
+    should make the package build again, without root privs. Thanks to Goswin
+    Brederlow for discovering the bug.                   (Closes: #258122).
+
+ -- Tollef Fog Heen <tfheen@debian.org>  Mon, 12 Jul 2004 13:17:43 +0200
+
+fvwm (2.5.10-9) unstable; urgency=low
+
+  * Bug fix: "fvwm: depends on gnome", thanks to Mario 'BitKoenig' Holbe
+    and others. Since it seems that the added functionality provided by
+    compiling in GNOME libraries was not worth the bloat caused by the
+    requirement to install the large chunks of GNOME, a new package,
+    fvwm-gnome, has been created, and fvwm proper shall not depend on
+    gnome.                                               (Closes: #256136).
+  * Bug fix: "fvwm: [INTL:fr] French debconf templates translation",
+    thanks to Christian Perrier                          (Closes: #256131).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Fri, 25 Jun 2004 13:26:15 -0500
+
+fvwm (2.5.10-8) unstable; urgency=low
+
+  * Bug fix: "fvwm: should depend on librplay3", thanks to Ludovico
+    Gardenghi. Fixed a complex bug related to invoking dpkg-shlibdeps
+    which did not find all executables. (Closes: #247953).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Wed, 23 Jun 2004 22:11:33 -0500
+
+fvwm (2.5.10-7) unstable; urgency=low
+
+  * Switched me and sacha around as maintainers; not having me as
+    maintainer made it harder for me to get the reports, and since sacha
+    is not active at this point, it should not matter. We can always
+    switch it back later.
+  * Bug fix: "NEWS doesn't mention upgrades", thanks to David B Harris
+                                                       (Closes: #247938).
+  * Bug fix: "fvwm: Please add German translation of the debconf
+    templates", thanks to Erik Schanze and  Helge  Kreutzmann
+                                               (Closes: #252830, 252308).
+  * Bug fix: "[INTL:nl] new Dutch po-debconf translation", thanks to Luk
+    Claes                                              (Closes: #251246).
+  * Bug fix: "fvwm: [INTL:fr] French debconf templates translation",
+    thanks to Christian Perrier                        (Closes: #249076).
+  * Bug fix: "Typos in debconf template", thanks to Jens Seidel
+                                                       (Closes: #250560).
+  * Bug fix: "fvwm menu-methods should quote title() properly", thanks to
+    Bill Allombert                                     (Closes: #251230).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Wed, 23 Jun 2004 13:37:12 -0500
+
+fvwm (2.5.10-6) unstable; urgency=low
+
+  * Bug fix: "fvwm: Could you add a Session file for gdm ?", thanks to
+    Antoine Sirinelli                                   (Closes: #246923).
+  * debian/NEWS.Debian: Bug fix: "fvwm: lacks information about upgrading
+    configuration", thanks to Yann Dirson                 (Closes: #247591).
+  * Bug fix: "fvwm: new way of handling configuration should provide a
+    smooth upgrade path", thanks to Yann Dirson. Well, the upgrade path is
+    smooth enough, though not automated, since this radical a change can't
+    easily be automated, and the old configuration is horribly out of
+    date anyway.                                         (Closes: #247599).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Fri,  7 May 2004 00:59:50 -0500
+
+fvwm (2.5.10-5) unstable; urgency=low
+
+  * Bug fix: "fvwm: postinst sets bogus alternative", thanks to Martin
+    Pitt                                             (Closes: #245443).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Sat, 24 Apr 2004 15:26:35 -0500
+
+fvwm (2.5.10-4) unstable; urgency=low
+
+  * Bug fix: "FVWM fails to compile on mips/mipsel machines", thanks to
+    Manoj Srivastava                                   (Closes: #244554).
+  * Bug fix: "still looking in the wrong location for system.fvwm2rc",
+    thanks to Sean Finney                              (Closes: #243926).
+  * Bug fix: "fvwm: strange files under /usr/share/doc/fvwm/", thanks to
+    Roland Stigge                                      (Closes: #242859).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Mon, 19 Apr 2004 03:45:50 -0500
+
+fvwm (2.5.10-3) unstable; urgency=low
+
+  * Bug fix: "There should be a symlink /usr/lib/fvwm/current -&gt;
+    VERSION", thanks to Karl Hegbloom. Since we no longer ship a .fvwmrc
+    file, we do not have to provide compatibility symlinks for dir changes
+    on upgrade.                                          (Closes: #218527).
+  * Bug fix: "fvwm: unnecessary ~/.fvwm/ creation", thanks to Neil W. Van
+    Dyke. Now the .fvwm file is created only on explicit user command.
+                                                        (Closes: #193761).
+  * Bug fix: "Latest unstable (2.5.10-2) can't find system.fvwm2rc",
+    thanks to Warren Overholt. Now ask a debconf question and abort
+    upgrade unless the user is ready for the new fvwm.  (Closes: #242662).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Thu,  8 Apr 2004 12:32:39 -0500
+
+fvwm (2.5.10-2) unstable; urgency=low
+
+  * Change the menu location to be consistent with where Debian has
+    traditionally put it.
+  * Bug fix: "fvwm: patch for the fvwm-update-menu script", thanks to
+    Julian Gilbey. We no longer have a system default menu.
+                                                    (Closes: #208501).
+  * Bug fix: "fvwm: Alt-Tab behaves wrong when NeverFocus window exists",
+    thanks to Alexandra N. Kossovsky. This is no longer applicable.
+                                                       (Closes: #207499).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Wed,  7 Apr 2004 10:40:14 -0500
+
+fvwm (2.5.10-1) unstable; urgency=medium
+
+  * New upstream release. This upload includes a number of security fixes,
+    see http://securitytracker.com/alerts/2004/Jan/1008781.html. Security
+    fixes in fvwm-menu-directory (BugTraq id 9161),
+    fvwm_make_directory_menu.sh, fvwm_make_browse_menu.sh.
+  * Bug fix: "FTBFS: setgid control directory", thanks to Matt Kraai. The
+    build system has been totally redone for this release.
+                                                        (Closes: #240379).
+  * We no longer include fvwm-setup-background, which used to invoke
+    xv. Instead, we use our own fvwm-root/xpmroot; which is a self
+    contained binary.                                    (Closes: #227548).
+  * Bug fix: "fvwm: /usr/lib/menu/fvwm: restart command of fvwm2 is
+    incorrect", thanks to Jeff Sheinberg     (Closes: #185758, 190584).
+  * Bug fix: "fvwm: seems to have a memory leak", thanks to
+    pmaydell@chiark.greenend.org.uk. Fvwm no longer appear to grow
+    infinitely in size, as observed over several weeks. This is a very
+    different code bas than what the bug was reported against.
+                                                         (Closes: #186660).
+  * Bug fix: "fvwm: hangs on (re)start with xfstt (unix/:7101) in font
+    path", thanks to Jeff Sheinberg.                      (Closes: #197630).
+  * Bug fix: "fvwm: Doesn't install", thanks to Richard Braakman. The
+    maintainer scripts have been totally redone.          (Closes: #202612).
+  * Bug fix: "fvwm: FvwmTaskBar does not start at all", thanks to
+    Christian Beier                                       (Closes: #210902).
+  * Bug fix: "fvwm: Fvwm package has unneed dependency on libgtk", thanks
+    to Victor B.Wagner                                    (Closes: #217968).
+  * Bug fix: "fvwmiconbox: dies when window title &gt;280 chars", thanks
+    to Alexander Zangerl . Works fine with the example in the bugreport.
+                                                          (Closes: #220155).
+  * Bug fix: "fvwm is missing dependency on libfribidi0", thanks to
+    Christoph Berg                                         (Closes: #242017).
+  * Bug fix: "fvwm: /usr/share/man/man1/x-window-manager.1.gz is a
+    dangling symlink", thanks to Vincent Lefevre           (Closes: #187084).
+  * Bug fix: "fvwm: A new version of fvwm is available", thanks to Manoj
+    Srivastava                                             (Closes: #218571).
+  * Bug fix: "fvwm: please package fvwm 2.5.x", thanks to Marco d'Itri
+                                                           (Closes: #189664).
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue,  6 Apr 2004 15:03:58 -0500
+
+fvwm (2.5.8-0.3) experimental; urgency=low
+
+  * Redid the build system to meet my standards.
+  * Start with a minimal difference from the upstream changes.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 25 Nov 2003 16:52:40 -0600
+
+fvwm (2.5.8-0.2) unstable; urgency=low
+
+  * Removed extraneous configuration option --enable-multibyte, thanks to
+    comments from Mikhael Goikhman <migo@homemail.com>
+  * Updated build depends to also depend on gdk-imlib-dev, to get the
+    missing GNOME functionality.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Tue, 11 Nov 2003 15:09:07 -0600
+
+fvwm (2.5.8-0.1) unstable; urgency=low
+
+  * New upstream release, local modification
+
+ -- Manoj Srivastava <srivasta@debian.org>  Mon, 10 Nov 2003 12:31:09 -0600
+
+fvwm (2.4.16-2) unstable; urgency=low
+
+  * In previous revision config.{sub,guess} changes, introduced in
+    2.4.15-2, had been reverted by mistake. This release put them back.
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Thu, 10 Jul 2003 15:10:36 +0000
+
+fvwm (2.4.16-1) unstable; urgency=low
+
+  * new upstream
+  * FvwmIcoMan fix (Closes: #182711, #193703)
+  * NoWarp option added to Menu command (Closes: #188274)
+  * The latter also applies to WindowList (Closes: #188272)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Tue,  8 Jul 2003 15:40:59 +0400
+
+fvwm (2.4.15-2) unstable; urgency=low
+
+  * Fix for purging fvwm if menu package is not installed (Closes: #182322)
+  * outdated config.{sub,guess} fix (Closes: #185297)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Sat, 22 Mar 2003 23:22:58 +0000
+
+fvwm (2.4.15-1) unstable; urgency=low
+
+  * debian/rules changed heavily (debhelper dependency removed)
+  * new upstream (Closes: #171810, #176561)
+  * system.fvwm2rc changed (Closes: #133611, #157293, #163596)
+  * fvwm man page fixed (Closes: #171089)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Mon, 27 Jan 2003 05:59:59 +0300
+
+fvwm (2.4.10-2) unstable; urgency=low
+
+  * Bugfix (Closes: #161282)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Fri, 20 Sep 2002 00:23:30 +0400
+
+fvwm (2.4.10-1) unstable; urgency=low
+
+  * New upstream
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Mon, 16 Sep 2002 02:34:53 +0400
+
+fvwm (2.4.9-1) unstable; urgency=low
+
+  * New upstream
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Thu,  5 Sep 2002 23:10:11 +0400
+
+fvwm (2.4.8-1) unstable; urgency=low
+
+  * New upstream (Closes: #150488)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Sun, 23 Jun 2002 08:18:38 +0400
+
+fvwm (2.4.7-2) unstable; urgency=low
+
+  * fixed menu file (Closes: #145779)
+  * minor menu changes
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Sat,  4 May 2002 17:08:07 +0400
+
+fvwm (2.4.7-1) unstable; urgency=low
+
+  *  New upstream
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Tue, 30 Apr 2002 03:11:30 +0400
+
+fvwm (2.4.6-2woody1) stable; urgency=high
+
+  * "No, restart Fvwm" command correction. Previous was to run
+    /usr/bin/X11/fvwm2, even fvwm is in /usr/bin since 2.4.5-2
+    (Closes: #153983)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Sat, 27 Jul 2002 22:16:35 +0000
+
+fvwm (2.4.6-2) unstable; urgency=high
+
+  *  fix for old /usr/bin/X11/ alternatives (Closes: #140806)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Mon,  8 Apr 2002 20:40:29 +0400
+
+fvwm (2.4.6-1) unstable; urgency=low
+
+  * New upstream version
+  * Closes: #137239, thanks to Mikael Hedin <micce@debian.org>
+  * really Closes: #134775
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Mon, 11 Mar 2002 01:03:25 +0300
+
+fvwm (2.4.5-3) unstable; urgency=low
+
+  *  more fixes to alternatives (Closes: #134775)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Thu, 21 Feb 2002 00:21:49 +0300
+
+fvwm (2.4.5-2) unstable; urgency=low
+
+  * moving from /usr/X11R6 to /usr to satisfy Debian policy 12.8.7
+  * prerm fixed to honour slave alternatives removal,
+    (Closes: #133335)
+  * debian/conffiles removed (Closes: #133620)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Fri, 15 Feb 2002 11:15:22 +0300
+
+fvwm (2.4.5-1) unstable; urgency=low
+
+  * New upstream release.
+  * changes to fvwm-update-menus (Closes: #129487)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Mon, 28 Jan 2002 11:08:44 +0300
+
+fvwm (2.4.4-5) unstable; urgency=low
+
+  * FvwmConsole changes (Closes: #101221)
+  * preinst changed (Closes: #129309)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Tue, 15 Jan 2002 03:01:58 +0300
+
+fvwm (2.4.4-4) unstable; urgency=low
+
+  * build with libstroke0 (Closes: #35600)
+  * setup-background is back (Closes: #111519)
+  * please note, setup-background call is removed from system.fvwm2rc
+  * fvwm-update-menu provides updating menus on the fly (Closes: #91878)
+  * FvwmButtons fix (Closes: #109686)
+  * CMD_Exec() change (Closes: #49808)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Fri, 11 Jan 2002 01:17:08 +0300
+
+fvwm (2.4.4-3) unstable; urgency=low
+
+  * fix in fvwm/read.c (Closes: #110909)
+  * fix in fvwm/style.c (Closes: #110106)
+  * added some manual pages links (Closes: #52493, #52495, #52496)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Tue,  8 Jan 2002 03:00:16 +0300
+
+fvwm (2.4.4-2) unstable; urgency=low
+
+  * fixed default system.fvwm2rc (Closes: #67322, #68487, #111513)
+  * fixed menu-method (Closes: #126191)
+  * some examples are back (Closes: #111510)
+  * fix in README.sysrc (Closes: #111509)
+  * ChangeLog is installed in /usr/share/doc/fvwm (Closes: #116974)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Sat,  5 Jan 2002 17:16:03 +0300
+
+fvwm (2.4.4-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #113181)
+  * all modifications of /etc/X11/fvwm/ are put away
+    (Closes: #109821, #110024, #110908)
+  * fixed update-alternatives stuff (Closes: #123603, #123650)
+  * menu-related fixes (Closes: #88270, #88160, #108846)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Thu,  3 Jan 2002 19:36:19 +0300
+
+fvwm (2.4.0-3) unstable; urgency=low
+
+  * fixed bugs in system.fvwm2rc.{default,old}
+  * (irrelevant to previous line)
+  * (Closes: #88270, #88160)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Fri, 24 Aug 2001 00:16:27 +0400
+
+fvwm (2.4.0-2) unstable; urgency=low
+
+  * debian/ bugfix
+  * (Closes: #108858, #109172, #109174, #109492, #109505, #108846)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Thu, 23 Aug 2001 04:05:06 +0400
+
+fvwm (2.4.0-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Sat,  4 Aug 2001 00:17:38 +0400
+
+fvwm (2.2.5-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix Build-depends. (Closes: #105060)
+
+ -- LaMont Jones <lamont@smallone.fc.hp.com>  Thu, 19 Jul 2001 10:39:13 -0600
+
+fvwm (2.2.5-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Tue, 27 Feb 2001 01:10:36 +0300
+
+fvwm (2.2.4-5) unstable; urgency=low
+
+  * complied without rplay library
+  * debian/* bugfix (Closes: #85317, #71144, #72301)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Fri,  9 Feb 2001 17:06:13 +0300
+
+fvwm (2.2.4-4) unstable; urgency=low
+
+  * menu-method correction from Yann Dirson applied. (Closes: #79162)
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Sun, 24 Dec 2000 22:39:03 +0300
+
+fvwm (2.2.4-3) unstable; urgency=low
+
+  * New maintainer.
+
+ -- Alexander Kotelnikov <sacha@debian.org>  Fri,  1 Dec 2000 20:47:31 +0300
+
+fvwm (2.2.4-2.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * debian/control: fix Build-Depends to refer to libxpm4-dev instead of
+    xpm4g-dev.
+  * debian/rules:
+    - fixed lame bug in dirpack rule (calling tar cf with no files to
+      archive, tut tut).
+    - don't ship keyboard.xpm, in anticipation of xlibs 4.0 having it
+  * Recompiled against modern xpm library to generate proper dependencies.
+
+ -- Branden Robinson <branden@debian.org>  Wed,  6 Sep 2000 15:20:30 -0500
+
+fvwm (2.2.4-2) frozen unstable; urgency=low
+
+  * Correct fatal syntax errors in fvwmrc_convert (so uploading to frozen
+    as well as unstable)
+  * Correct Build-Depends for newest potato libraries (libncurses and
+    libreadline) and include auto{conf,make} (for some reason, the build
+    uses them)
+
+ -- Julian Gilbey <jdg@debian.org>  Wed, 19 Jan 2000 00:29:47 +0000
+
+fvwm (2.2.4-1) unstable; urgency=low
+
+  * New upstream source (very minor bug fixes)
+  * Remove shlibs.local now that libreadlineg2 has been fixed.
+
+ -- Julian Gilbey <jdg@debian.org>  Thu,  9 Dec 1999 01:48:41 +0000
+
+fvwm (2.2.3-4) unstable; urgency=low
+
+  * Provide x-window-manager (Closes: #51830)
+  * Correct setup-background.1x manpage (Closes: #46529)
+  * No longer use dh_installwm.  (Prevents configure-time warnings)
+
+ -- Julian Gilbey <jdg@debian.org>  Tue,  7 Dec 1999 18:09:50 +0000
+
+fvwm (2.2.3-3) unstable; urgency=low
+
+  * Add build dependencies
+  * Remove install-stamp target from debian/rules
+  * Recompile to use new librplay3 library
+
+ -- Julian Gilbey <jdg@debian.org>  Mon,  6 Dec 1999 17:13:48 +0000
+
+fvwm (2.2.3-2) unstable; urgency=low
+
+  * Correct fvwm-common postinst bug (Closes: #49445)
+
+ -- Julian Gilbey <jdg@debian.org>  Sun,  7 Nov 1999 18:05:51 +0000
+
+fvwm (2.2.3-1) unstable; urgency=low
+
+  * New upstream version
+  * Correct Depends and Suggests lines (Closes: #49026)
+
+ -- Julian Gilbey <jdg@debian.org>  Tue,  2 Nov 1999 22:52:01 +0000
+
+fvwm (2.2.2-5) unstable; urgency=low
+
+  * Added appropriate IconPath and PixmapPath lines to system.fvwm2rc for
+    Debian's very messy situation
+
+ -- Julian Gilbey <jdg@debian.org>  Mon,  1 Nov 1999 09:23:59 +0000
+
+fvwm (2.2.2-4) unstable; urgency=low
+
+  * Corrected copying error: twm postinst -> fvwm postinst had fvwm2.1x by
+    mistake (Closes: #48756)
+  * Correct update.warn syntax error (Closes: #48841)
+
+ -- Julian Gilbey <jdg@debian.org>  Sun, 31 Oct 1999 23:23:48 +0000
+
+fvwm (2.2.2-3) unstable; urgency=medium
+
+  * Changed "Exec" to "Exec exec" in menu-method file (Closes: #47291)
+  * Changed perl5 dependency to perl5 | perl.
+  * Corrected preinst so it doesn't fail if not already installed (Closes:
+    #47021, #47531)
+  * Use x-windows-manager alternatives system (Closes: #40733)
+  * Corrected repeated sentence in fvwm2.1 (Closes: #42638)
+  * Corrected system.warnings reference to README.Debian_upgrading
+    (Closes: #45731)
+  * Allow .fvwm2/.fvwm warnings to be disabled (Closes: #48013)
+  * FHS compliance
+
+ -- Julian Gilbey <jdg@debian.org>  Wed, 27 Oct 1999 23:35:41 +0100
+
+fvwm (2.2.2-2) unstable; urgency=low
+
+  * Change Pre-Depends: perl to Depends: perl5.
+
+ -- Julian Gilbey <jdg@debian.org>  Thu,  1 Jul 1999 22:58:21 +0100
+
+fvwm (2.2.2-1) unstable; urgency=low
+
+  * Another new upstream bug-fix release
+
+ -- Julian Gilbey <jdg@debian.org>  Mon,  7 Jun 1999 16:25:34 +0100
+
+fvwm (2.2.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Never released (not checked for compilability etc)
+
+ -- Julian Gilbey <jdg@debian.org>  Fri, 14 May 1999 02:13:12 +0100
+
+fvwm (2.2-6) unstable; urgency=low
+
+  * Hopefully last release of 2.2 before moving to 2.2.1 (a bug-fix
+    release)
+  * Add a new hook to system.fvwm2rc called default-style.hook, so that
+    all of the icon settings and suchlike don't need to be reset
+  * Modified system.warnings to provide a restart option on the quit form
+  * Added example: default-style-hook.change-colours to show how to do so
+  * Added example: post-hook.change-buttons to reproduce the behaviour of
+    2.2-3's title bar buttons
+  * Added example: post-hook.window-buttons-maximize
+  * Added example: post-hook.menu-form-exit to use QuitVerify
+  * Moved default xterm in system.fvwm2rc to top of menu (suggested by
+    Andrew Pimlott)
+  * Only have default xterm in main menu if the menu package is not
+    present (by destroying the menu and re-reading the hook files in the
+    menu-method)
+  * Correct icon commands in system.fvwm2rc to refer to programs by
+    resource class rather than title
+  * Setup-background has new config file location again and once more can
+    use sitewide config files (although in a new location); Closes: #35634
+    again!
+  * Have postinst for fvwm-common move setup-background's global config
+    files from /etc/X11/fvwm2 (or their rescued location) to their new
+    location
+
+ -- Julian Gilbey <jdg@debian.org>  Fri, 14 May 1999 00:35:29 +0100
+
+fvwm (2.2-5) unstable; urgency=low
+
+  * Undo the change to system.fvwm2rc introduced by the fix to #37082 in
+    2.2-4.  This turned out to make everything far, far too slow.  The
+    code has been relegated to a post.hook example file for those who want
+    it and are prepared to pay the performance penalty.  The problem can
+    also be `solved' by removing NumLock and ScrollLock's xmodmap
+    bindings.
+
+ -- Julian Gilbey <jdg@debian.org>  Tue,  4 May 1999 04:35:52 +0100
+
+fvwm (2.2-4) unstable; urgency=low
+
+  * Add MiniIcon style options to system.fvwm2rc for common programs;
+    although these will probably need changing when wm-icons is
+    introduced (Closes: #11355)
+  * Always have an xterm option on the Debian menu, even if the menu
+    package is not installed (so won't be stuck with nothing)
+  * Correction to fvwmrc_convert Sticky* problem
+  * Wrote setup-background manpage, further alleviating #35634; I think it
+    can probably be closed soon, once the READMEs are improved; #35706 can
+    be closed as well
+  * Correct menu-method (Closes: #35829, #36500)
+  * system.fvwm2rc changes:
+    - Corrected syntax of Exec commands (to avoid extra shell processes)
+    - Returned to Exit fvwm menu instead of form (Closes: #36232)
+    - Added MiniIcon options to the Style commands (Closes: #11355)
+    - Adds Alt-Fn to the Window-Ops menu (Closes: #32923).  I don't really
+      like the order of options: they make little sense, but the principle
+      of least surprise requires me to maintain them.  I hope to add an
+      example post.hook in the examples directory to handle this
+    - Reverted back to Lars' colour scheme (white/steelblue) to please
+      Branden ;-) (Closes: #36231)
+    - Removed the excess window buttons as well (Closes: #36234)
+    - Handle NumLock and/or ScrollLock being on (Closes: #37082)
+  * Added some example hook files in /usr/doc/fvwm/examples
+  * Now only Suggests: menu rather than Recommends: (Closes: #36335)
+  * Modify preinst so it only saves modified .hook files (as compared with
+    the Debian 2.1 (slink) version), saves the whole old /etc/X11/fvwm2
+    directory structure too, and only asks the user to hit return to read
+    the message. This will hopefully be dealt with better at a later
+    stage. Also rewrote preinst in Perl for the purpose.
+  * Revert to only Recommending fvwm-common rather than Depending
+  * Removed fvwm-common-beta conflict, as there won't exist such a
+    package
+  * Added support for readline and rplay
+
+ -- Julian Gilbey <jdg@debian.org>  Mon,  3 May 1999 23:50:04 +0100
+
+fvwm (2.2-3) unstable; urgency=low
+
+  * Made fvwm Depend on fvwm-common because of setup-background being
+    called from system.fvwm2rc. Currently an ugly hack, which will
+    hopefully be cured soon, with fvwm-common being split into wm-common
+    and wm-icons
+  * fvwm-common now suggests xloadimage. (Closes: #35707)
+  * setup-background is now window-manager-independent. However, this
+    means that its config files have moved. This is documented in the
+    README file, and will be documented in the manpage to appear
+    (hopefully) in the next upload -- sort of exacerbates bug #35634
+  * fixed debian/rules to handle broken fileutils 4.0 (Closes: #35866);
+    thanks James for spotting this one!
+
+ -- Julian Gilbey <jdg@debian.org>  Wed, 14 Apr 1999 22:29:40 +0100
+
+fvwm (2.2-2) unstable; urgency=low
+
+  * Corrected semantic error in preinst. (Closes: #34981)
+
+ -- Julian Gilbey <jdg@debian.org>  Wed, 24 Mar 1999 14:12:13 +0000
+
+fvwm (2.2-1) unstable; urgency=low
+
+  * New upstream (stable!!) source; this is the first stable release of
+    FVWM 2
+  * New maintainer
+  * MAJOR USER-VISIBLE CHANGES have been made in this package as compared
+    to the fvwm2 beta-releases.  These are mainly due to the fact that
+    fvwm is now the main package and fvwm1 is secondary: please see the
+    README.upgrade file for details
+  * Renamed this package as fvwm on Branden Robinson's advice, as it is
+    now *the* stable fvwm; FVWM 1.xx has been discontinued upstream (and
+    FVWM 1.xx is now found in the fvwm1 package)
+  * Massive changes to the Debian scripts which solve several of the
+    Debian-related bugs
+  * Lots of bugs are closed by fixes in the upstream source since the bugs
+    were filed
+  * This release closes many bugs: (Closes: #5736, #10862, #11861, #16143, #18576, #20444,
+    #20831, #22286, #24135, #32796, #32939, #33109, #33755, #34149,
+    #18003, #21097, #32795, #8785, #8954, #14791, 21547, #25601, #11495,
+    #27276); although some of these are not really fixed, but the upstream
+    authors do not intend to do so in the near future. Also, the
+    following bugs are partially fixed: 11824 and 11886.
+
+ -- Julian Gilbey <jdg@debian.org>  Fri, 19 Mar 1999 00:18:21 +0000
+
+fvwm2 (2.1.10-2) unstable; urgency=low
+
+  * Get the --syscondir= option right. (Closes: #32775)
+  * Add setup-background. (Closes: #32777)
+  * Fixup postinst. (Closes: #32779)
+
+ -- Vincent Renardias <vincent@waw.com>  Wed,  3 Feb 1999 09:15:02 +0100
+
+fvwm2 (2.1.10-1) unstable; urgency=low
+
+  * New upstream release (Closes: #31800, #30418, #25943)
+    (Upstream version changed a _lot_ of code, so I had to
+    shoehorn the previous changes; Hope I got it right.)
+  * changes to debian/rules:
+    - adapt for GNU configure.
+    - Fvwm.tmpl doesn't exist anymore.
+    - strip executables (Pkg size: 2.4Mo -> 700k)
+  * Now includes FvwmCommand/FvwmCommandS (Bug #31204).
+  * extras/* modules included (Closes: #8665, #16949).
+  * Removed Recommends: from package fvwm-common on fvwm2|fvwm95:
+    It's not up to fvwm-common to recommend a WM, but to the WMs
+    which are using it to recommend fvwm-common.
+    (Closes: #26671)
+  * Move setup-background from fvwm2 to fvwm-common (Bug #21314).
+  * Patch setup-background so it works with other window managers
+    too. (Closes: #30216)
+  * The default config and the menu system are now decent enough
+    to consider 10099 fixed. (Closes: #10099)
+  * #10862 has been fixed in upstream code.
+  * Don't autoconvert the users' .fvwmrc anymore.
+    (Closes: #11899, #25939, #26316, #30506)
+  * Close #13008 & #12985: This was very likely due to a file
+    corruption that happened during download, or the file was already
+    corrupted/truncated on the mirror were it has been fetched.
+  * Close #13146: This is not a bug, but the expected behavior.
+  * Close #14236: The behavior has changed upstream.
+  * s/DestroyMenu/DestroyFunc/ in system.fvwm2rc
+    (Closes: #17667, #24310).
+  * Set 'Mouse 0 W M -' in system.fvwm2rc (Closes: #17668).
+  * Fix #22844 (NMU Hack). Could not re-apply the patch since
+    the build system has moved to autoconf.
+  * s/README.sysrc/README.sysrc.gz/ in system.fvwm2rc
+    (Closes: #22982).
+  * The fvwm2-plus package isn't produced anymore. (Closes: #25770, #25941, #25942)
+  * Set PagerGeometry to '-0-0'. (Closes: #27851)
+  * Now built with rplay support. (Closes: #31439)
+  * Don't Recommends: menu, just Suggests: it. (Closes: #17972)
+  * Add Y. Dirson's suggestion to system.fvwm2rc. (Closes: #26748)
+  * post{inst,rm} scripts now use the register-window-manager
+    script.
+
+ -- Vincent Renardias <vincent@waw.com>  Fri, 29 Jan 1999 22:11:01 +0100
+
+fvwm2 (2.0.46-BETA-3.1) frozen unstable; urgency=low
+
+  * Corrected Fvwm.tmpl to look for AlphaArchitecture && __linux__
+    instead of just linux. This seems to work again.
+
+ -- Michael Alan Dorman <mdorman@debian.org>  Sun, 10 May 1998 19:49:03 +0500
+
+fvwm2 (2.0.46-BETA-3) frozen unstable; urgency=low
+
+  * postinst: create /etc/X11/window-managers if it doesn't already exist
+    as temporary work-around for case when xbase hasn't been configured
+    by the time fvwm2 postinst runs. (Closes: #22022)
+  * copyright file now included in fvwm-common. (Closes: #19312)
+  * system.fvwm2rc now includes ScrollBar line in window-ops menu.
+    (Closes: #21559)
+  * system.fvwm2rc has fixed M-TAB and friends.  Single page only,
+    however, due to bug in page flipping. (Closes: #17666)
+
+ -- Austin Donnelly <and1000@debian.org>  Sat,  2 May 1998 19:49:03 +0100
+
+fvwm2 (2.0.46-BETA-2) unstable; urgency=low
+
+  * removed mini-gv.xpm from fvwm-common icons, since it was causing an
+    overlap with the gv package. (Closes: #16373)
+
+ -- Austin Donnelly <and1000@debian.org>  Sat, 24 Jan 1998 12:58:46 +0000
+
+fvwm2 (2.0.46-BETA-1) unstable; urgency=low
+
+  * New upstream release.
+    -fix bad interaction of NoTitle and MiniIcon (Closes: #11489)
+  * built against libc6 and newest X libraries.
+   (Closes: #11683, #12674, #12970, #11682, #12676, #12921, #12967, #13577)
+  * patch to FvwmPager fixes problems with geometry spec overriding.
+    (Closes: #10330, #10535, #11051, #11860)
+  * FvwmIdent manpage fix: default background is white. (Closes: #11495)
+  * incorporated RJK's fixes to fvwmrc_convert. (Closes: #10138)
+  * fvwmrc_convert doesn't use gawk anymore. (Closes: #10140)
+  * postinst and postrm add and remove fvwm2 from /etc/X11/window-managers.
+    (Closes: #11484)
+  * FvwmCpp now uses /lib/cpp for its cpp. (Closes: #11051)
+  * explicitly set PixmapPath and IconPath in Fvwm.tmpl since the imake
+    defaults are no longer any good.
+  * README.sysrc includes "hints and tips" section, with info on
+    configuring your pager.
+
+ -- Austin Donnelly <and1000@debian.org>  Sun,  5 Oct 1997 13:55:32 +0100
+
+fvwm2 (2.0.45-BETA-4) unstable; urgency=high
+
+  * manpage fix: OpaqueMove -> OpaqueMoveSize. (Closes: #8775)
+  * manpage fix: say that fvwm2 reads /etc/X11/fvwm2/system.fvwm2rc
+    (Closes: #8767)
+  * move subdirectories of debian/ into a tar.gz.uue file.
+    (Closes: #8664, #9141)
+  * changelog.Debian (this file) now distributed. (Closes: #8637)
+  * move hook files aside in preinst so dpkg doesn't blow them away when
+    they leave the file list.  Restore or default them in the postinst.
+  * /etc/menu-methods/fvwm2 now puts quotes around titles to xterms for
+    text-only menu entries.
+  * remove the "DeleteMenu" from /etc/menu-methods/fvwm2, and don't
+    generate main-menu.hook.
+  * main-menu-pre.hook now available again
+  * system.fvwm2rc modified to use main-menu-pre.hook
+  * sloppy arg checking in postinst made fvwm2 impossible to install from
+    scratch - this is why this is urgency HIGH.
+  * fvwm2-menu-method upgraded to menu-1.3 compatible one
+  * fvwm2-menudefs upgraded to menu-1.3 compatability
+  * fvwm2 now "recommends" menu(>=1.3).
+  * default main-menu-pre.hook is an xterm entry, just in case menu is
+    not being used.
+  * system.fvwm2rc now decor-friendly
+  * include sample fvwm2rc showing how to use M4
+  * when purging, clear out /etc/X11/fvwm2/.fvwm too
+
+ -- Austin Donnelly <and1000@debian.org>  Thu, 8 May 1997 00:42:19 +0100
+
+fvwm2 (2.0.45-BETA-3) unstable; urgency=low
+
+  * Changed package description to be more up-to-date
+  * postinst now cleans up the no longer used main-menu-pre.hook, and
+    resets main-menu.hook (vestige of the old menu system). (Closes: #8318)
+
+ -- Austin Donnelly <and1000@debian.org>  Sun, 6 Apr 1997 16:58:57 +0100
+
+fvwm2 (2.0.45-BETA-2) unstable; urgency=low
+
+  * Use Joost's menu package more correctly
+  * Add list of modules we support to Modules/ menu (Closes: #8066).
+  * Spruce up the system.fvwm2rc a little: its now much more usable.
+    (Closes: #8044, #8174)
+  * README.sysrc updated to reflect new world view.
+  * Moved bitmaps out of /usr/include/X11/pixmaps. (Closes: #7625)
+
+ -- Austin Donnelly <and1000@debian.org>  Sun, 23 Mar 1997 19:22:07 +0000
+
+fvwm2 (2.0.45-BETA-1) unstable; urgency=medium
+
+  * Don't overwrite the default hooks. (Closes: #7364)
+  * Applied Andrew Veliath's patch to fix the "Style ... NoButton 0"
+    bugglet (bug in upstream 2.0.45).
+  * Added support for Joost's menu system
+  * Added upstream ChangeLog to /usr/doc/fvwm2. (Closes: #7305)
+
+ -- Austin Donnelly <and1000@debian.org>  Sat, 15 Feb 1997 16:42:23 +0000
+
+fvwm2 (2.0.45-BETA-0) unstable; urgency=low
+
+  * New upstream release.
+  * Fixed typo in FvwmWinList manpage. (Closes: #6408)
+  * New release fixes wrong gid problems. (Closes: #6469, #6924, #6925)
+  * Install a stripped xpmroot binary. (Closes: #5072)
+  * Tweak to system.fvwm2rc to solve problem with hooks being run
+    multiple times. (Closes: #6597).
+  * Now includes some icons from fvwm95 - related to #6401 in fvwm95
+  * Include my own fvwm2rc to demo new features of fvwm2
+
+ -- Austin Donnelly <and1000@debian.org>  Sun, 9 Feb 1997 17:45:42 +0000
+
+fvwm2 (2.0.44-BETA-0) unstable; urgency=low
+
+  * New upstream release.
+  * Re-packaged in new Debian source format
+  * NEVER RELEASED into the wild.
+
+ -- Austin Donnelly <and1000@debian.org>  Sat, 11 Jan 1997 19:06:24 +0000
+
+fvwm2 (2.0.43-BETA-2) unstable; urgency=low
+
+  * debian.rules: added GoodStuff manpage to fvwm-common package.
+  * icons/xterm-linux.xpm: added from kernel source
+  * manpages: are now installed compressed
+  * released version 2.0.43
+
+ -- Austin Donnelly <and1000@valour.pem.cam.ac.uk>  Sun, 25 Aug 1996 15:21:42 +0000
+
+fvwm2 (2.0.43-BETA-1) unstable; urgency=low
+
+  * fvwm2.man: typo fixed. (Closes #4099).
+
+ -- Austin Donnelly <and1000@valour.pem.cam.ac.uk>  Sat, 17 Aug 1996 15:49:39 +0000
+
+fvwm2 (2.0.43-BETA-0) unstable; urgency=low
+
+  * New upstream release
+  * debian.rules: conforms to new packaging guidelines
+  * added Lars Wirzenius' dynamic fvwm config stuff as default
+  * split off common parts into new fvwm-common package. This source
+    tree now build both the fvwm2 and fvwm-common packages. Fixes
+    bugs #3437 and #3748.
+  * renamed system configuration file to system.fvwm2rc. Tickles a
+    bug in dpkg.
+  * Added complex example configuration file, to show off lots more
+    features.
+  * debian.postinst: creates empty hook files to shut fvwm up
+  * debian.postrm: remove empty hook files on purge
+
+ -- Austin Donnelly <and1000@valour.pem.cam.ac.uk>  Sun, 28 Jul 1996 21:20:11 +0000
+
+fvwm2 (2.0.42-BETA-1) unstable; urgency=low
+
+  * Fvwm.tmpl: define FVWM_CPP to be /lib/cpp
+  * added debian.* files
+  * added utils/convert_users to be called from postinst
+  * fvwm2.man: man page corrections
+  * mini.emacs.xpm: emacs icon drawn and added
+  * FvwmAuto.man: more corrections
+  * FvwmCpp.c: security fix
+  * FvwmCpp.man: corrections
+  * FvwmM4.c: security fix
+  * FvwmPager.man: correction
+  * fvwmrc_convert: bugfixes:
+    o corrects order of IconBox translation
+    o if old .fvwmrc specified to use the built-in pager, then
+        configure FvwmPager to be as similar as possible
+    o fixes problem with old buttonstyle translation conde
+    o fixed problem where spurious ')' could appear at the start
+        of a line by itself
+    o handles MWMBorders
+    o handles Cursor
+    o handles SloppyFocus
+    o fixes a few problems with '$0' appearing in output rather than
+        being expanded.
+    o fixes problems translating menu defns with spaces in the title
+
+ -- Austin Donnelly <and1000@valour.pem.cam.ac.uk>  Sat, 20 Apr 1996 21:06:03 +0000
+
+fvwm2 (2.0.42-BETA-0) unstable; urgency=low
+
+  * Initial release.
+
+ -- Austin Donnelly <and1000@valour.pem.cam.ac.uk>  Wed, 17 Apr 1996 16:27:12 +0000

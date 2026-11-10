@@ -1,0 +1,113 @@
+fvwm (1:2.6.9-1) unstable; urgency=low
+
+    The Debian FVWM 2.6.x package has renamed the helper binaries
+    and manual pages to not be confused with FVWM3 binaries when
+    both fvwm and fvwm3 are installed. This includes fvwm2-config,
+    fvwm2-convert-2.6, fvwm2-menu-desktop, fvwm2-menu-directory,
+    fvwm2-menu-headlines, fvwm2-menu-xlock, fvwm2-perllib, and
+    fvwm2-root.
+
+    Alternatives have been added for commonly used fvwm helper
+    binaries that share names with fvwm3 helper binaries. This
+    includes fvwm-menu-desktop, fvwm-menu-directory, fvwm-perllib,
+    and fvwm-root.
+
+    FvwmModuleName manual pages have been renamed to Fvwm2ModuleName
+    to avoid confusion with fvwm3 modules. The module names are unchanged.
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Sat, 08 Oct 2022 22:00:00 -0600
+
+fvwm (1:2.6.7-1) unstable; urgency=low
+
+    FVWM now comes with a default configuration. The default will load if
+    no configuration file is found when fvwm starts. The default config
+    file can be found at /usr/share/fvwm/default-config/config.
+
+    Some modules have been removed. This may require you update your config
+    file. See the upstream news file, /usr/share/doc/fvwm/changelog.gz, for
+    a list of changes and suggested replacements.
+
+    The old Debian menu methods have been removed to update to current policy
+    of using XDG menus. Use fvwm-menu-desktop to access XDG menus in fvwm.
+    This will require you have python-xdg and a menu, such as lxmenu-data,
+    installed.
+
+ -- Jaimos Skriletz <jaimosskriletz@gmail.com>  Wed, 16 Nov 2016 19:44:54 -0700
+
+fvwm (1:2.6.5.ds-2) unstable; urgency=low
+
+    FVWM package versions up to and including 2.5.30 used to include a default
+    configuration file /etc/X11/fvwm/system.fvwm2rc, which is used when a
+    user has no user-specific configuration under ~/.fvwm/. Starting from
+    version 1:2.6.5.ds-2, no such system configuration is provided or used.
+    The behavior when starting FVWM without a configuration file now follows
+    upstream.
+
+    For those who are upgrading from a previous version of the FVWM package
+    and would like to continue using the old system configuration:
+    - If you HAVE modified /etc/X11/fvwm/system.fvwm2rc, the file will be
+      renamed system.fvwm2rc.dpkg-bak. Simply copy/move the file to
+      ~/.fvwm/config.
+    - If you have NOT modified /etc/X11/fvwm/system.fvwm2rc, the file will
+      no longer be there. Simply copy the file under the examples/ directory
+      to your user directory with the following commands:
+       mkdir ~/.fvwm 2>/dev/null
+       cd /usr/share/doc/fvwm/examples
+       gunzip -c system.fvwm2rc.Debian.gz > ~/.fvwm/config
+
+ -- Vincent W. Chen <vinmun@gmail.com>  Tue, 12 Feb 2013 20:44:54 -0800
+
+fvwm (2.5.10-6) unstable; urgency=low
+
+    Previous versions of the FVWM package provided a Debian-specific default
+    configuration setup which was suboptimal in some respects. Starting with
+    2.5.10, the Debian packages rely on FVWM's own default configuration
+    mechanisms. Thus, if you start without a ~/.fvwm/ directory and no
+    ~/.fvwm2rc file, FVWM will provide a menu that sets up a basic
+    configuration for you.
+
+    If you are upgrading from a previous version of the FVWM package and you
+    would like to populate your home directory with the old Debian-specific
+    default configuration, you may be able to do so by using the following
+    commands:
+     mkdir ~/.fvwm
+     for i in /etc/X11/fvwm/*.hook.dpkg-old; do
+       cp "$i" "~/.fvwm/$(basename "$i" .dpkg-old)"
+     done
+
+    Even though it's possible for you to use the old Debian-specific
+    configuration files, this is not recommended. Aside from FVWM's own
+    default configuration, this Debian package includes a full set of examples
+    in /usr/share/doc/fvwm/sample.fvwmrc/, and http://www.fvwm.org/ has many
+    additional resources.
+
+ -- Manoj Srivastava <srivasta@debian.org>  Fri,  7 May 2004 00:59:50 -0500
+
+fvwm (2.5.8-0.3) experimental; urgency=low
+
+  * There are new conditions, conditional statements, styles, commands,
+    command options, transparency support, EWMH support (allows
+    integration into KDE and GNOME environments), finer grained
+    customization of decorations, themes support, finer grained binding of
+    commands to portions of the window border, anti-aliased text rendering
+    support, embedded perl library for creating modules in Perl, better
+    placement algorithms, improved performance, new graphical debugger
+    module, and many other changes.
+  * There are new utilities to help customize fvwm if there is no fvwmrc
+    file available.  Because of this, the package removes the default
+    system-wide fvwmrc file, since that shadowed the nice configuration
+    utilities. 
+  * The Debian menu is available from the file /etc/X11/fvwm/DebianMenu
+    (the old file /etc/X11/fvwm/menudefs.hook shall be retained as a
+    synlink for a bit). This would require a change in existing user
+    configuration files.
+  * In the postinst we now move old conffiles out of the way (.dpkg-old),
+    since they interfere with the new configuration generation tools; but
+    we do not delete the files, so preserving user changes. We only do
+    this if the user is upgrading from a pre 2.5.8 version. On purge, we
+    remove all these preserved files as well.
+  * As a passing note, this package under the control of arch
+    arch-tag: ec98d578-705b-4b9e-80bb-4d998c2d377c
+
+
+ -- Manoj Srivastava <srivasta@debian.org>  Wed, 26 Nov 2003 09:41:16 -0600

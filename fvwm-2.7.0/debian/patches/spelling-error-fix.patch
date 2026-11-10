@@ -1,0 +1,15 @@
+Description: Fix spelling error caught by lintian.
+Author: Jaimos Skriletz <jaimosskriletz@gmail.com>
+Forwarded: not-needed
+Last-Update: 2022-10-20
+--- a/doc/commands/Maximize.xml
++++ b/doc/commands/Maximize.xml
+@@ -58,7 +58,7 @@ dimension of the window is set to
+ If the value is smaller than 0 the size is subtracted from the
+ screen width, i.e. -25 is the same as 75.  If
+ <replaceable>horizontal</replaceable>
+-is "<fvwmopt cmd="Maximize" opt="grow"/>", it is maximized to curren
++is "<fvwmopt cmd="Maximize" opt="grow"/>", it is maximized to current
+ available space until
+ finding any obstacle.  The vertical resizing is similar.  If both
+ horizontal and vertical values are "grow", it expands vertically
